@@ -2,6 +2,7 @@ package redrock.tongji.redrockexam.ext
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.IdRes
@@ -18,7 +19,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
  * @Description
  * @Date create in 2022/7/14 10:37
  */
-fun <T> lazyUnlock(initializer: () -> T) = lazy(LazyThreadSafetyMode.NONE, initializer)
+
+inline fun <reified T : Activity> Activity.startActivity() {
+    startActivity(Intent(this, T::class.java))
+}
 
 fun Fragment.showToast(content: String): Toast {
     val toast = Toast.makeText(this.activity?.applicationContext, content, Toast.LENGTH_SHORT)
