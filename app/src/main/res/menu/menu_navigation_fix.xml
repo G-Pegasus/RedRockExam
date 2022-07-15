@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/navigation_home"
         android:checked="true"
         android:icon="@mipmap/home"
         android:title="@string/home" />
     <item
-        android:id="@+id/action_community"
+        android:id="@+id/navigation_community"
         android:icon="@mipmap/community"
         android:title="@string/community" />
     <item
-        android:id="@+id/action_notification"
+        android:id="@+id/navigation_notify"
         android:icon="@mipmap/notification"
         android:title="@string/notification" />
 
     <item
-        android:id="@+id/action_mine"
+        android:id="@+id/navigation_mine"
         android:icon="@mipmap/mine"
         android:title="@string/mine" />
 

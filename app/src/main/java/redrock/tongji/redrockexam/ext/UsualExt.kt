@@ -32,12 +32,6 @@ fun Context.showToast(content: String): Toast {
     return toast
 }
 
-fun Activity.findNavController(@IdRes viewId: Int): NavController =
-    Navigation.findNavController(this, viewId)
-
-fun Fragment.findNavController(@IdRes viewId: Int): NavController =
-    Navigation.findNavController(requireActivity(), viewId)
-
 fun View.gone() {
     visibility = View.GONE
 }

@@ -8,7 +8,7 @@ android {
     compileSdk 31
 
     buildFeatures {
-        viewBinding true
+        dataBinding true
     }
 
     defaultConfig {
@@ -64,14 +64,11 @@ dependencies {
 
 
     // jetpack
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.work:work-runtime:2.5.0'
     implementation "androidx.startup:startup-runtime:1.0.0"
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-    implementation "androidx.paging:paging-runtime:3.0.0"
 
     // 其他功能
-    implementation 'com.github.chrisbanes:PhotoView:latest.release.here'
+    //implementation 'com.github.chrisbanes:PhotoView:latest.release.here'
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.1-release-jitpack'
+    //implementation 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.1-release-jitpack'
 }

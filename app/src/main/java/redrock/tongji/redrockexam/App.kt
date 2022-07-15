@@ -4,10 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
-import androidx.work.WorkManager
-import com.shuyu.gsyvideoplayer.player.IjkPlayerManager
-import redrock.tongji.redrockexam.ui.SplashActivity
-import tv.danmaku.ijk.media.player.IjkMediaPlayer
 
 /**
  * @Author Tongji
@@ -24,7 +20,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
-        IjkPlayerManager.setLogLevel(if (BuildConfig.DEBUG) IjkMediaPlayer.IJK_LOG_WARN else IjkMediaPlayer.IJK_LOG_SILENT)
+        //IjkPlayerManager.setLogLevel(if (BuildConfig.DEBUG) IjkMediaPlayer.IJK_LOG_WARN else IjkMediaPlayer.IJK_LOG_SILENT)
     }
 
     companion object {
