@@ -12,6 +12,7 @@ import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.CommonData
 import redrock.tongji.redrockexam.bean.RecData
 import redrock.tongji.redrockexam.databinding.FragmentDailyBinding
+import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity
 import redrock.tongji.redrockexam.ui.adapter.DailyAdapter
 import redrock.tongji.redrockexam.ui.viewmodel.DailyViewModel
@@ -66,15 +67,7 @@ class DailyFragment : BaseBindVMFragment<DailyViewModel, FragmentDailyBinding>()
                     }
                 })
             } else {
-                val emptyRecData =
-                    RecData("加载失败了,下拉刷新试试", "", "", 0, "", "", "", "", "", "", "textCard", "")
-                val emptyList = mutableListOf(emptyRecData)
-                mViewModel.listData.clear()
-                mViewModel.listData.addAll(emptyList)
-                dailyAdapter = context?.let { DailyAdapter(it, emptyList) }!!
-                rvDaily.adapter = dailyAdapter
-                rvDaily.adapter?.notifyDataSetChanged()
-                Toast.makeText(context, "日报加载失败了>_<", Toast.LENGTH_SHORT).show()
+                this.showToast("网络好像不太好？555~")
             }
         }
     }

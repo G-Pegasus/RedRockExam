@@ -21,7 +21,7 @@ class DailyViewModel : BaseViewModel() {
         dailyLiveData.value = 0
     }
     private val moreLiveData = MutableLiveData<String>()
-    val morePathData = Transformations.switchMap(moreLiveData) { url-> Repository.loadMoreDaily(url) }
+    val morePathData = Transformations.switchMap(moreLiveData) { url -> Repository.loadMoreDaily(url) }
     fun loadMore(url: String) {
         moreLiveData.value = url
     }

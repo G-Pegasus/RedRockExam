@@ -4,6 +4,7 @@
     <string name="community">社区</string>
     <string name="notification">通知</string>
     <string name="mine">我的</string>
-    <string name="slogan">每日精选视频，让你大开眼界</string>
+    <string name="slogan">author 挽弦慕笙</string>
     <string name="todo">TODO</string>
+    <string name="daily_openEye_handpick">今日开眼精选</string>
 </resources>

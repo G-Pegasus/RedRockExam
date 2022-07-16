@@ -4,10 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.RecData
-import redrock.tongji.redrockexam.util.ItemViewType
 
 /**
  * @Author Tongji
@@ -20,7 +20,7 @@ class DailyAdapter(context: Context, private val mList: MutableList<RecData>)
     private lateinit var onItemClickListener: OnItemClickListener
 
     inner class TextViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        val text: TextView = itemView.findViewById(R.id.tv_daily)
     }
 
     inner class FollowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -83,9 +83,7 @@ class DailyAdapter(context: Context, private val mList: MutableList<RecData>)
 
     }
 
-    override fun getItemCount(): Int {
-        return mList.size
-    }
+    override fun getItemCount(): Int = mList.size
 
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int)

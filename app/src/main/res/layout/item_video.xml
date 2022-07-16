@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_video_bg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:padding="1dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/video_back"
+        app:shapeAppearanceOverlay="@style/roundedCornerImageStyle" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_video_portrait"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/iv_video_bg"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/portrait"
+        app:shapeAppearanceOverlay="@style/circleImageStyle" />
+
+    <TextView
+        android:id="@+id/tv_video_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="title：刘同骥爱可莉"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/iv_video_bg"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/iv_video_portrait"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_video_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="title：刘同骥爱可莉"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/iv_video_bg"
+        android:layout_marginTop="45dp"
+        android:layout_toEndOf="@+id/iv_video_portrait"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_video_time_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:layout_toEndOf="@+id/tv_video_description"
+        android:layout_below="@+id/iv_video_bg"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="20dp"
+        tools:text="时长："/>
+
+    <TextView
+        android:id="@+id/tv_video_time_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:layout_toEndOf="@+id/tv_video_time_1"
+        android:layout_below="@+id/iv_video_bg"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="1dp"
+        tools:text="06:22"/>
+
+</RelativeLayout>
