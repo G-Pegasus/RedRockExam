@@ -47,3 +47,9 @@ data class TagInfoBean(
         val itemType: String
     )
 }
+
+data class TagInfoData(
+    val name: String,
+    val description: String,
+    val cover:String
+    )

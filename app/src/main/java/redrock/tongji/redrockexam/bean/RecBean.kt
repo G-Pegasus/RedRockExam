@@ -14,12 +14,18 @@ data class RecBean(
     val nextPageUrl: String,
     val total: Int
 ) {
-
     data class Item(
         val adIndex: Int,
-        val `data`: Data,
+        val data: Data,
         val id: Int,
         val type: String
+    )
+
+    data class DataXX(
+        val adTrack: List<Any>,
+        val content: ContentX,
+        val dataType: String,
+        val header: HeaderX
     )
 
     data class Data(
@@ -97,7 +103,7 @@ data class RecBean(
 
     data class Content(
         val adIndex: Int,
-        val `data`: DataX,
+        val data: DataX,
         val id: Int,
         val type: String
     )
@@ -127,7 +133,7 @@ data class RecBean(
 
     data class ItemX(
         val adIndex: Int,
-        val `data`: DataXX,
+        val data: DataXX,
         val id: Int,
         val type: String
     )
@@ -287,16 +293,9 @@ data class RecBean(
         val shielded: Boolean
     )
 
-    data class DataXX(
-        val adTrack: List<Any>,
-        val content: ContentX,
-        val dataType: String,
-        val header: HeaderX
-    )
-
     data class ContentX(
         val adIndex: Int,
-        val `data`: DataXXX,
+        val data: DataXXX,
         val id: Int,
         val type: String
     )
