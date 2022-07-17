@@ -4,13 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import redrock.tongji.lib_base.base.BaseAdapter
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.CommonData
-import redrock.tongji.redrockexam.bean.RecData
 import redrock.tongji.redrockexam.databinding.FragmentDailyBinding
 import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity

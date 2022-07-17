@@ -25,4 +25,5 @@ class DailyViewModel : BaseViewModel() {
     fun loadMore(url: String) {
         moreLiveData.value = url
     }
+
 }

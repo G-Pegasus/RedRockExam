@@ -203,7 +203,7 @@ object Repository {
         val list = mutableListOf<RecData>()
         try {
             for (i in 0 until length) {
-                if (response.itemList[i].type == "textCard" && response.itemList[i].data.type != "footer2" && response.itemList[i].data.type != "header7" && length > 1) {
+                if (response.itemList[i].type == "textCard" && length > 1) {
                     val recData = RecData(
                         response.itemList[i].data.text,
                         "", "", 0, "", "", "", "", "", "", response.itemList[i].type,
@@ -224,7 +224,8 @@ object Repository {
                         response.itemList[i].data.content.data.id.toString(),
                         response.itemList[i].data.content.data.cover.blurred,
                         response.itemList[i].data.content.data.author.icon,
-                        "squareCardCollection",
+                        // "squareCardCollection"
+                        response.itemList[i].type,
                         response.nextPageUrl
                     )
                     list.add(recData)
