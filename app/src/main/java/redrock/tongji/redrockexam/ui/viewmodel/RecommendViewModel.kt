@@ -5,8 +5,8 @@ import redrock.tongji.lib_base.base.BaseViewModel
 /**
  * @Author Tongji
  * @Description
- * @Date create in 2022/7/15 9:40
+ * @Date create in 2022/7/17 19:11
  */
-class HomeViewModel : BaseViewModel() {
+class RecommendViewModel : BaseViewModel() {
 
 }

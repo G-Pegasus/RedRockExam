@@ -33,14 +33,14 @@
     <TextView
         android:id="@+id/tv_video_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         tools:text="title：刘同骥爱可莉"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_below="@+id/iv_video_bg"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/iv_video_portrait"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginStart="12dp"/>
 
     <TextView
         android:id="@+id/tv_video_description"
@@ -52,7 +52,7 @@
         android:layout_below="@+id/iv_video_bg"
         android:layout_marginTop="45dp"
         android:layout_toEndOf="@+id/iv_video_portrait"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginStart="12dp"/>
 
     <TextView
         android:id="@+id/tv_video_time_1"
@@ -64,7 +64,7 @@
         android:layout_below="@+id/iv_video_bg"
         android:layout_marginTop="45dp"
         android:layout_marginStart="20dp"
-        tools:text="时长："/>
+        android:text="@string/video_time"/>
 
     <TextView
         android:id="@+id/tv_video_time_2"

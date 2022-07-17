@@ -8,15 +8,14 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/include_toolbar"
-            layout="@layout/include_toolbar" />
-
-        <include
-            android:id="@+id/include_list"
-            layout="@layout/include_list" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我是我的"
+            android:textSize="18sp"/>
 
     </LinearLayout>
 

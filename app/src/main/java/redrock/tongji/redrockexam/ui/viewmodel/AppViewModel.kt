@@ -7,7 +7,7 @@ import redrock.tongji.redrockexam.util.EventLiveData
 
 /**
  * @Author Tongji
- * @Description
+ * @Description 供全局引用
  * @Date create in 2022/7/17 14:50
  */
 class AppViewModel : ViewModel() {

@@ -17,17 +17,7 @@ class NotifyFragment : BaseBindVMFragment<NotifyViewModel, FragmentNotifyBinding
         get() = R.layout.fragment_notify
 
     override fun initView() {
-        appViewModel.run {
-            //监听全局的主题颜色改变
-            appColor.observeInFragment(this@NotifyFragment) {
-                ColorUtil.setUiTheme(
-                    it,
-                    mDatabind.includeToolbar,
-                    mDatabind.includeList.floatbtn,
-                    mDatabind.includeList.includeRecyclerview.swipeRefresh
-                )
-            }
-        }
+
     }
 
     override fun lazyLoadData() {

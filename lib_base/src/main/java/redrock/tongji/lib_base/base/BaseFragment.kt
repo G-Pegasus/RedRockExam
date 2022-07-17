@@ -39,12 +39,12 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initData()
     }
 
     override fun onResume() {
         super.onResume()
         if (!mHasLoadData) {
-            initData()
             mHasLoadData = true
         }
     }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.R
@@ -22,21 +23,21 @@ import redrock.tongji.redrockexam.ui.viewmodel.DailyViewModel
 class DailyFragment : BaseBindVMFragment<DailyViewModel, FragmentDailyBinding>() {
 
     private lateinit var dailyAdapter: DailyAdapter
+    private val viewModel by lazy { ViewModelProvider(this)[DailyViewModel::class.java] }
 
     override val getLayoutRes: Int
         get() = R.layout.fragment_daily
 
     @SuppressLint("NotifyDataSetChanged")
     override fun initView() {
-        val dailyLayoutManager = LinearLayoutManager(context)
         val rvDaily = mDatabind.includeList.includeRecyclerview.recyclerView
-        rvDaily.layoutManager = dailyLayoutManager
-        mViewModel.loadDaily()
-        mViewModel.dailyPathData.observerKt { result ->
+        rvDaily.layoutManager = LinearLayoutManager(context)
+        viewModel.loadDaily()
+        viewModel.dailyPathData.observerKt { result ->
             val list = result.getOrNull()
             if (list != null) {
-                mViewModel.listData.clear()
-                mViewModel.listData.addAll(list)
+                viewModel.listData.clear()
+                viewModel.listData.addAll(list)
                 dailyAdapter = context?.let { DailyAdapter(it, list) }!!
                 rvDaily.adapter = dailyAdapter
                 rvDaily.adapter?.notifyDataSetChanged()

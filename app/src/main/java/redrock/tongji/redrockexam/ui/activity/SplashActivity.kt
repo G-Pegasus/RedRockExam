@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
 import redrock.tongji.lib_base.base.BaseBindActivity
-import redrock.tongji.redrockexam.MainActivity
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.databinding.ActivitySplashBinding
 import redrock.tongji.redrockexam.ext.startActivity

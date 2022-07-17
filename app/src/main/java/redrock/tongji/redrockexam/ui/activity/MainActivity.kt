@@ -1,16 +1,11 @@
-package redrock.tongji.redrockexam
+package redrock.tongji.redrockexam.ui.activity
 
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import redrock.tongji.lib_base.base.BaseBindVMActivity
+import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.databinding.ActivityMainBinding
 import redrock.tongji.redrockexam.ext.init
 import redrock.tongji.redrockexam.ext.initMain
@@ -37,24 +32,6 @@ class MainActivity : BaseBindVMActivity<MainViewModel, ActivityMainBinding>() {
                 R.id.navigation_mine -> mBind.mainViewpager.setCurrentItem(3, false)
             }
         }
-
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                val nav = findNavController(R.id.host_fragment)
-                if (nav.currentDestination != null && nav.currentDestination!!.id != R.id.navigation_home) {
-                    //如果当前界面不是主页，那么直接调用返回
-                    nav.navigateUp()
-                } else {
-                    //是主页
-                    if (System.currentTimeMillis() - exitTime > 2000) {
-                        Toast.makeText(this@MainActivity, "再按一次退出应用", Toast.LENGTH_SHORT).show()
-                        exitTime = System.currentTimeMillis()
-                    } else {
-                        finish()
-                    }
-                }
-            }
-        })
     }
 
     override fun initData() {

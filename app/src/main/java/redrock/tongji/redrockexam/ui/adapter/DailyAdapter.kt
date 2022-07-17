@@ -20,7 +20,7 @@ import java.util.*
  * @Description 日报界面 Adapter
  * @Date create in 2022/7/15 22:25
  */
-class DailyAdapter(val context: Context, private val mList: MutableList<RecData>)
+class DailyAdapter(val context: Context, private val mList: MutableList<RecData>?)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var onItemClickListener: OnItemClickListener
@@ -45,7 +45,7 @@ class DailyAdapter(val context: Context, private val mList: MutableList<RecData>
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (mList[position].type) {
+        return when (mList?.get(position)?.type) {
             "textCard" -> 1
             "followCard" -> 2
             else -> 0
@@ -57,10 +57,6 @@ class DailyAdapter(val context: Context, private val mList: MutableList<RecData>
             1 -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_text, parent, false)
-                // RV 优化
-                TextViewHolder(view).text.setOnClickListener {
-                    onClickListener(FollowViewHolder(view).absoluteAdapterPosition)
-                }
                 TextViewHolder(view)
             }
 
@@ -68,9 +64,9 @@ class DailyAdapter(val context: Context, private val mList: MutableList<RecData>
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_video, parent, false)
                 // RV 优化
-                FollowViewHolder(view).rootLayout.setOnClickListener {
-                    onClickListener(FollowViewHolder(view).absoluteAdapterPosition)
-                }
+//                FollowViewHolder(view).rootLayout.setOnClickListener {
+//                    onClickListener(FollowViewHolder(view).absoluteAdapterPosition)
+//                }
                 FollowViewHolder(view)
             }
 
@@ -84,32 +80,40 @@ class DailyAdapter(val context: Context, private val mList: MutableList<RecData>
 
     @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (getItemViewType(position)) {
-            // Text 类型
-            1 -> {
-                val textHolder = holder as TextViewHolder
-                textHolder.text.text = mList[position].text
-            }
+        if (mList != null) {
+            when (getItemViewType(position)) {
+                // Text 类型
+                1 -> {
+                    val textHolder = holder as TextViewHolder
+                    textHolder.text.text = mList[position].text
+                }
 
-            // Video 类型
-            2 -> {
-                val followCard = holder as FollowViewHolder
-                followCard.tvTitle.text = mList[position].title
-                followCard.tvDescription.text = mList[position].title
-                Glide.with(context).load(mList[position].avatar)
-                    .into(followCard.ivPortrait)
-                Glide.with(context).load(mList[position].url)
-                    .into(followCard.ivBg)
-                val timeFormat = SimpleDateFormat("mm:ss")
-                timeFormat.timeZone = TimeZone.getTimeZone("GMT+00:00")
-                val hms = timeFormat.format(mList[position].time * 1000)
-                followCard.tvTime.text = hms
+                // Video 类型
+                2 -> {
+                    val followCard = holder as FollowViewHolder
+                    followCard.tvTitle.text = mList[position].title
+                    followCard.tvDescription.text = mList[position].author
+                    Glide.with(context).load(mList[position].avatar)
+                        .into(followCard.ivPortrait)
+                    Glide.with(context).load(mList[position].url)
+                        .into(followCard.ivBg)
+                    val timeFormat = SimpleDateFormat("mm:ss")
+                    timeFormat.timeZone = TimeZone.getTimeZone("GMT+00:00")
+                    val hms = timeFormat.format(mList[position].time * 1000)
+                    followCard.tvTime.text = hms
+                    holder.rootLayout.setOnClickListener {
+                        onItemClickListener.onItemClick(
+                            holder.itemView,
+                            position
+                        )
+                    }
+                }
             }
         }
     }
 
     fun addMore(moreList: MutableList<RecData>) {
-        mList.addAll(moreList)
+        mList?.addAll(moreList)
     }
 
     // 对 RV 进行优化
@@ -117,7 +121,9 @@ class DailyAdapter(val context: Context, private val mList: MutableList<RecData>
         onItemClickListener.onItemClick(it, position)
     }
 
-    override fun getItemCount(): Int = mList.size
+    override fun getItemCount(): Int {
+        return mList?.size ?: 0
+    }
 
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int)

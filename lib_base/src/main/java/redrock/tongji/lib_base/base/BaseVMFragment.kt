@@ -58,5 +58,5 @@ abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
 
     }
 
-    abstract fun lazyLoadData()
+    open fun lazyLoadData() {}
 }
