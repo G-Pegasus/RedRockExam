@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * @Description
  * @Date create in 2022/7/15 19:38
  */
+// 悬浮按钮
 public class FatScrollAwareFABBehavior extends FloatingActionButton.Behavior {
 
     public FatScrollAwareFABBehavior(Context context, AttributeSet attrs) {

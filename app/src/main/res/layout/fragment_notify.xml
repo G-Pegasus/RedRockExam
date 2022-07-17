@@ -1,21 +1,23 @@
-<layout>
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
     </data>
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="redrock.tongji.redrockexam.ui.fragment.NotifyFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/include_toolbar" />
 
-    </RelativeLayout>
+        <include
+            android:id="@+id/include_list"
+            layout="@layout/include_list" />
+
+    </LinearLayout>
 
 </layout>
