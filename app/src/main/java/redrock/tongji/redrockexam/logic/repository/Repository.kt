@@ -5,6 +5,7 @@ package redrock.tongji.redrockexam.logic.repository
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 import androidx.lifecycle.liveData
+import redrock.tongji.redrockexam.bean.NotifyData
 import redrock.tongji.redrockexam.bean.RecData
 import redrock.tongji.redrockexam.bean.TagInfoData
 import redrock.tongji.redrockexam.bean.TagRecData
@@ -244,7 +245,7 @@ object Repository {
         val list = mutableListOf<RecData>()
         try {
             for (i in 0 until length) {
-                if (response.itemList[i].type == "textCard" && response.itemList[i].data.type != "footer2" && response.itemList[i].data.type != "header7" && length > 1) {
+                if (response.itemList[i].type == "textCard" && length > 1) {
                     val recData = RecData(
                         response.itemList[i].data.text,
                         "", "", 0, "", "", "", "", "", "", response.itemList[i].type,
@@ -265,12 +266,51 @@ object Repository {
                         response.itemList[i].data.content.data.id.toString(),
                         response.itemList[i].data.content.data.cover.blurred,
                         response.itemList[i].data.content.data.author.icon,
-                        "squareCardCollection",
+                        response.itemList[i].type,
                         response.nextPageUrl
                     )
                     list.add(recData)
                 }
             }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        Result.success(list)
+    }
+
+    fun loadNotify() = fire(Dispatchers.IO) {
+        val response = ApiLoad.loadNotify()
+        val length = response.messageList.size
+        val list = mutableListOf<NotifyData>()
+        for (i in 0 until length) {
+            val messageData = NotifyData(
+                response.messageList[i].title,
+                response.messageList[i].content,
+                response.messageList[i].date,
+                response.nextPageUrl
+            )
+            list.add(messageData)
+        }
+
+        Result.success(list)
+    }
+
+    fun loadMoreNotify(url: String) = fire(Dispatchers.IO) {
+        val response = ApiLoad.loadMoreNotify(url)
+        val length = response.messageList.size
+        val list = mutableListOf<NotifyData>()
+        try {
+            for (i in 0 until length) {
+                val messageData = NotifyData(
+                    response.messageList[i].title,
+                    response.messageList[i].content,
+                    response.messageList[i].date,
+                    response.nextPageUrl
+                )
+                list.add(messageData)
+            }
+
         } catch (e: Exception) {
             e.printStackTrace()
         }

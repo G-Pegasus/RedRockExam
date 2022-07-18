@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.*
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,6 +22,7 @@ import redrock.tongji.redrockexam.util.ColorUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.logging.Handler
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -47,6 +49,17 @@ fun RecyclerView.init(
     adapter = bindAdapter
     isNestedScrollingEnabled = isScroll
     return this
+}
+
+//初始化 SwipeRefreshLayout
+fun SwipeRefreshLayout.init(onRefreshListener: () -> Unit) {
+    this.run {
+        setOnRefreshListener {
+            onRefreshListener.invoke()
+        }
+        //设置主题颜色
+        setColorSchemeColors(ColorUtil.getColor(App.context))
+    }
 }
 
 // 普通 ViewPager

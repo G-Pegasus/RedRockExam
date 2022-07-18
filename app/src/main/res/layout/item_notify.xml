@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_notify_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:strokeColor="@color/black"
+        android:src="@mipmap/eyeicon"
+        android:scaleType="fitXY"
+        app:shapeAppearanceOverlay="@style/circleImageStyle"
+        android:layout_marginStart="10dp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/tv_notify_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="title"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@+id/iv_notify_icon"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_notify_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/colorGray"
+        android:layout_below="@+id/tv_notify_title"
+        android:layout_toEndOf="@+id/iv_notify_icon"
+        tools:text="描述"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_notify_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_notify_description"
+        android:layout_toEndOf="@+id/iv_notify_icon"
+        android:textSize="12sp"
+        android:textColor="@color/colorGray"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        tools:text="2022"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.2dp"
+        android:background="#bbbbbb"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/tv_notify_time"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+</RelativeLayout>

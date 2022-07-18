@@ -1,8 +1,6 @@
 package redrock.tongji.redrockexam.logic.network
 
-import redrock.tongji.redrockexam.bean.RecBean
-import redrock.tongji.redrockexam.bean.TagBean
-import redrock.tongji.redrockexam.bean.TagInfoBean
+import redrock.tongji.redrockexam.bean.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -50,4 +48,10 @@ interface ApiService {
 
     @GET
     fun getMoreTagRec(@Url url: String): Call<TagBean>
+
+    @GET("v3/messages?udid=20d2c76ac00b4b2ea4fe0249eafb6dc470d782a5&vc=6030022&vn=6.3.2&size=1080X1920&deviceModel=MI%205s%20Plus&first_channel=xiaomi&last_channel=xiaomi&system_version_code=26")
+    fun getNotify(): Call<NotifyBean>
+
+    @GET
+    fun getMoreNotify(@Url url: String): Call<NotifyBean>
 }

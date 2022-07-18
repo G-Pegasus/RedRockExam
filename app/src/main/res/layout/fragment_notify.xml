@@ -12,10 +12,18 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我是通知"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/message"
+            android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"/>
+
+        <include
+            android:id="@+id/include_list"
+            layout="@layout/include_list"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
 
     </LinearLayout>
 

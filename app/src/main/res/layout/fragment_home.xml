@@ -22,16 +22,18 @@
                 android:id="@+id/tb_home"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
                 app:tabBackground="@null"
                 app:tabGravity="center"
-                app:tabMode="fixed"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                app:tabTextColor="@color/colorGray"
-                app:tabSelectedTextColor="@color/black"
-                app:tabIndicatorColor="@color/black"
+                app:tabTextColor="#aaaaaa"
                 app:tabIndicatorFullWidth="false"
-                android:textSize="16sp"/>
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabPaddingEnd="25dp"
+                app:tabPaddingStart="25dp"
+                app:tabRippleColor="@null"/>
 
         </LinearLayout>
 
@@ -40,9 +42,8 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="0dp"
-            android:layout_marginBottom="50dp"
             android:layout_marginTop="5dp"
-            android:layout_weight="11"
+            android:layout_weight="12"
             android:overScrollMode="never"/>
 
     </LinearLayout>

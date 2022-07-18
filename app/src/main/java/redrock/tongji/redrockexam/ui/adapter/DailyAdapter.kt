@@ -20,10 +20,11 @@ import java.util.*
  * @Description 日报界面 Adapter
  * @Date create in 2022/7/15 22:25
  */
-class DailyAdapter(val context: Context, private val mList: MutableList<RecData>?)
+class DailyAdapter(private val context: Context, private val mList: MutableList<RecData>?)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var onItemClickListener: OnItemClickListener
+    var isScrolling = false
 
     // 文本类型ViewHolder
     inner class TextViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -80,7 +81,7 @@ class DailyAdapter(val context: Context, private val mList: MutableList<RecData>
 
     @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (mList != null) {
+        if (mList != null && !isScrolling) {
             when (getItemViewType(position)) {
                 // Text 类型
                 1 -> {

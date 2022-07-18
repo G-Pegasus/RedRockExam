@@ -8,4 +8,10 @@
     <string name="todo">TODO</string>
     <string name="daily_openEye_handpick">今日开眼精选</string>
     <string name="video_time">时长：</string>
+    <!-- RefreshLayout -->
+    <string name="refresh_header">下拉刷新</string>
+    <string name="refresh_footer">上拉加载</string>
+    <string name="loading">正在加载</string>
+    <string name="pending">松开刷新</string>
+    <string name="message">消息</string>
 </resources>

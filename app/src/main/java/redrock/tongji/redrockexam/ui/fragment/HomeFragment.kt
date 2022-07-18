@@ -26,7 +26,7 @@ class HomeFragment : BaseBindVMFragment<BaseViewModel, FragmentHomeBinding>() {
         fragments.add(DailyFragment())
         mDatabind.vpHome.init(this, fragments)
         mDatabind.vpHome.offscreenPageLimit = 2
-        TabLayoutMediator(mDatabind.tbHome, mDatabind.vpHome, true, false) {
+        TabLayoutMediator(mDatabind.tbHome, mDatabind.vpHome, true, true) {
                 tab, position ->
             tab.text = tabTitles[position]
         }.attach()
