@@ -10,33 +10,30 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
+import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
-import redrock.tongji.redrockexam.bean.RecData
+import redrock.tongji.redrockexam.bean.DiscoveryData
 import java.text.SimpleDateFormat
 import java.util.*
 
 /**
  * @Author Tongji
- * @Description 推荐界面 Adapter
- * @Date create in 2022/7/19 10:51
+ * @Description
+ * @Date create in 2022/7/19 19:50
  */
-class RecommendAdapter(private val context: Context, private val mList: MutableList<RecData>?)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DiscoveryAdapter(private val context: Context, private val mList: MutableList<DiscoveryData>?) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private lateinit var onItemClickListener: RecommendAdapter.OnItemClickListener
-    var isScrolling = false
+    private lateinit var onItemClickListener: OnItemClickListener
 
+    // 文本类型ViewHolder
     inner class TextViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val text: TextView = itemView.findViewById(R.id.tv_daily)
     }
 
-    inner class SquareViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val ivBg: ShapeableImageView = itemView.findViewById(R.id.iv_video_bg)
-        val ivPortrait: ShapeableImageView = itemView.findViewById(R.id.iv_video_portrait)
-        val tvTitle: TextView = itemView.findViewById(R.id.tv_video_title)
-        val tvDescription: TextView = itemView.findViewById(R.id.tv_video_description)
-        val tvTime: TextView = itemView.findViewById(R.id.tv_video_time_2)
-        val rootLayout: RelativeLayout = itemView.findViewById(R.id.item_video_root)
+    inner class ColumnViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvColumn: TextView = itemView.findViewById(R.id.tv_column)
+        val ivColumn: ShapeableImageView = itemView.findViewById(R.id.iv_column)
     }
 
     inner class SmallVideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -47,12 +44,18 @@ class RecommendAdapter(private val context: Context, private val mList: MutableL
         val smallRootLayout: RelativeLayout = itemView.findViewById(R.id.item_small_video_root)
     }
 
+    inner class BriefViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val ivBriefBg: ShapeableImageView = itemView.findViewById(R.id.iv_brief)
+        val tvBriefTitle: TextView = itemView.findViewById(R.id.tv_brief_title)
+        val tvBriefContent: TextView = itemView.findViewById(R.id.tv_brief_content)
+    }
+
     override fun getItemViewType(position: Int): Int {
         return when (mList?.get(position)?.type) {
             "textCard" -> 1
-            "squareCardCollection" -> 2
-            "followCard" -> 3
+            "columnCardList" -> 2
             "videoSmallCard" -> 3
+            "briefCard" -> 4
             else -> 0
         }
     }
@@ -67,8 +70,8 @@ class RecommendAdapter(private val context: Context, private val mList: MutableL
 
             2 -> {
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_video, parent, false)
-                SquareViewHolder(view)
+                    .inflate(R.layout.item_column, parent, false)
+                ColumnViewHolder(view)
             }
 
             3 -> {
@@ -79,57 +82,49 @@ class RecommendAdapter(private val context: Context, private val mList: MutableL
 
             else -> {
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_small_video, parent, false)
-                SmallVideoViewHolder(view)
+                    .inflate(R.layout.item_brief, parent, false)
+                BriefViewHolder(view)
             }
         }
     }
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (mList != null && !isScrolling) {
+        if (mList != null) {
             when (getItemViewType(position)) {
                 1 -> {
-                    val textHolder = holder as RecommendAdapter.TextViewHolder
+                    val textHolder = holder as DiscoveryAdapter.TextViewHolder
                     textHolder.text.text = mList[position].text
                 }
 
                 2 -> {
-                    val squareCollection = holder as RecommendAdapter.SquareViewHolder
-                    squareCollection.tvTitle.text = mList[position].title
-                    squareCollection.tvDescription.text = "# " + mList[position].author
-                    Glide.with(context).load(mList[position].avatar)
-                        .into(squareCollection.ivPortrait)
-                    Glide.with(context).load(mList[position].url)
-                        .into(squareCollection.ivBg)
-                    val timeFormat = SimpleDateFormat("mm:ss")
-                    timeFormat.timeZone = TimeZone.getTimeZone("GMT+00:00")
-                    val hms = timeFormat.format(mList[position].time * 1000)
-                    squareCollection.tvTime.text = hms
-                    holder.rootLayout.setOnClickListener {
-                        onItemClickListener.onItemClick(
-                            holder.itemView,
-                            position
-                        )
-                    }
+                    val columnHolder = holder as ColumnViewHolder
+                    Glide.with(App.context).load(mList[position].url).into(columnHolder.ivColumn)
+                    columnHolder.tvColumn.text = mList[position].title
                 }
 
                 3 -> {
-                    val smallVideoHolder = holder as RecommendAdapter.SmallVideoViewHolder
-                    smallVideoHolder.tvSmallTitle.text = mList[position].title
-                    smallVideoHolder.tvSmallCategory.text = "# " + mList[position].author
-                    Glide.with(context).load(mList[position].url)
-                        .into(smallVideoHolder.ivSmallBg)
+                    val smallVideoViewHolder = holder as DiscoveryAdapter.SmallVideoViewHolder
+                    Glide.with(App.context).load(mList[position].url).into(smallVideoViewHolder.ivSmallBg)
+                    smallVideoViewHolder.tvSmallTitle.text = mList[position].title
+                    smallVideoViewHolder.tvSmallCategory.text = "# " + mList[position].author
                     val timeFormat = SimpleDateFormat("mm:ss")
                     timeFormat.timeZone = TimeZone.getTimeZone("GMT+00:00")
                     val hms = timeFormat.format(mList[position].time * 1000)
-                    smallVideoHolder.tvSmallTime.text = hms
+                    smallVideoViewHolder.tvSmallTime.text = hms
                     holder.smallRootLayout.setOnClickListener {
                         onItemClickListener.onItemClick(
                             holder.itemView,
                             position
                         )
                     }
+                }
+
+                4 -> {
+                    val briefViewHolder = holder as BriefViewHolder
+                    Glide.with(App.context).load(mList[position].url).into(briefViewHolder.ivBriefBg)
+                    briefViewHolder.tvBriefTitle.text = mList[position].title
+                    briefViewHolder.tvBriefContent.text = mList[position].description
                 }
             }
         }

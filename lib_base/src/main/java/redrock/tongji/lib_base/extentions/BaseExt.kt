@@ -1,17 +1,11 @@
 package redrock.tongji.lib_base.extentions
 
-import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.IdRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.viewbinding.ViewBinding
 import redrock.tongji.lib_base.util.AppGlobal
 import java.lang.reflect.InvocationTargetException

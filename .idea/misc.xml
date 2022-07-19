@@ -6,23 +6,33 @@
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/bottom_selector.xml" value="0.1295" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/ic_arrow_downward_black_24dp.xml" value="0.151" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/ic_arrow_upward_black_24dp.xml" value="0.151" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/selector_banner_point.xml" value="0.151" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/shape_banner_point_bg_disable.xml" value="0.151" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/shape_banner_point_bg_enable.xml" value="0.151" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_play_video.xml" value="0.24818840579710144" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_special_info.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_splash.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_community.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_daily.xml" value="0.24818840579710144" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_discovery.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_mine.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_notify.xml" value="0.2" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_popularity.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_rec.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/include_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/include_recyclerview.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/include_toolbar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/item_brief.xml" value="0.24320652173913043" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/item_column.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/item_notify.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/item_small_video.xml" value="0.24818840579710144" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/item_special.xml" value="0.4" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/item_text.xml" value="0.24818840579710144" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/item_video.xml" value="0.24818840579710144" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/layout_banner.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/rv_foot_view.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/rv_head_view.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/view_scale_footer.xml" value="0.24320652173913043" />

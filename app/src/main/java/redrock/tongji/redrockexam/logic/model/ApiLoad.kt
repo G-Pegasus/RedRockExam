@@ -25,4 +25,6 @@ object ApiLoad {
     suspend fun loadNotify() = NetCreate.apiService.getNotify().await()
 
     suspend fun loadMoreNotify(url: String) = NetCreate.apiService.getMoreNotify(url).await()
+
+    suspend fun loadDiscovery() = NetCreate.apiService.getDiscovery().await()
 }

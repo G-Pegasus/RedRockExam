@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_column"
+        android:layout_width="180dp"
+        android:layout_height="110dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/video_back"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:shapeAppearanceOverlay="@style/roundedCornerImageStyle"/>
+
+    <TextView
+        android:id="@+id/tv_column"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@+id/iv_column"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        tools:text="text" />
+
+</RelativeLayout>

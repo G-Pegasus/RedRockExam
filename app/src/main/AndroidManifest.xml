@@ -16,6 +16,9 @@
         android:theme="@style/Theme.RedRockExam"
         tools:targetApi="n">
         <activity
+            android:name=".ui.activity.SpecialInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.PlayVideoActivity"
             android:exported="false" />
         <activity
