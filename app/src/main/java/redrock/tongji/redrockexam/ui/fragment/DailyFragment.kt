@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import redrock.tongji.lib_base.base.BaseBindVMFragment
+import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.CommonData
 import redrock.tongji.redrockexam.bean.RecData
@@ -34,7 +35,7 @@ class DailyFragment : BaseBindVMFragment<DailyViewModel, FragmentDailyBinding>()
     @SuppressLint("NotifyDataSetChanged")
     override fun initView() {
         val rvDaily = mDatabind.includeList.includeRecyclerview.recyclerView
-        rvDaily.layoutManager = LinearLayoutManager(context)
+        rvDaily.layoutManager = LinearLayoutManager(App.context)
         rvDaily.setItemViewCacheSize(10)
         viewModel.loadDaily()
         viewModel.dailyPathData.observerKt { result ->
@@ -74,32 +75,28 @@ class DailyFragment : BaseBindVMFragment<DailyViewModel, FragmentDailyBinding>()
             }
         }
 
-        viewModel.morePathData.observerKt { result ->
-            val list = result.getOrNull()
-            if (list != null) {
-                viewModel.listData.addAll(list)
-                dailyAdapter.addMore(list)
-                dailyAdapter.notifyDataSetChanged()
-            } else {
-                this.showToast("已经没有更多了哦~")
-            }
-        }
-
-        // 停止滑动时刷新数据，滑动卡顿严重，留待以后解决
-        rvDaily.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    dailyAdapter.isScrolling = false
-                    viewModel.loadMore(viewModel.listData[viewModel.listData.size - 1].nextUrl)
-                } else {
-                    dailyAdapter.isScrolling = true
-                }
-            }
-        })
-    }
-
-    override fun lazyLoadData() {
-
+//        viewModel.morePathData.observerKt { result ->
+//            val list = result.getOrNull()
+//            if (list != null) {
+//                viewModel.listData.addAll(list)
+//                dailyAdapter.addMore(list)
+//                dailyAdapter.notifyDataSetChanged()
+//            } else {
+//                this.showToast("已经没有更多了哦~")
+//            }
+//        }
+//
+//        // 停止滑动时刷新数据，滑动卡顿严重，留待以后解决
+//        rvDaily.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                    dailyAdapter.isScrolling = false
+//                    viewModel.loadMore(viewModel.listData[viewModel.listData.size - 1].nextUrl)
+//                } else {
+//                    dailyAdapter.isScrolling = true
+//                }
+//            }
+//        })
     }
 
 }

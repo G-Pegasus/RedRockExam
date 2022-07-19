@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import redrock.tongji.lib_base.base.BaseViewModel
 import redrock.tongji.redrockexam.bean.RecData
+import redrock.tongji.redrockexam.logic.repository.DailyRepo
 import redrock.tongji.redrockexam.logic.repository.Repository
 
 /**
@@ -15,12 +16,13 @@ class DailyViewModel : BaseViewModel() {
 
     var listData = mutableListOf<RecData>()
     private val dailyLiveData = MutableLiveData<Int>()
-    val dailyPathData = Transformations.switchMap(dailyLiveData) { Repository.loadDaily() }
+    val dailyPathData = Transformations.switchMap(dailyLiveData) { DailyRepo.loadDaily() }
     fun loadDaily() {
         dailyLiveData.value = 0
     }
+
     private val moreLiveData = MutableLiveData<String>()
-    val morePathData = Transformations.switchMap(moreLiveData) { url -> Repository.loadMoreDaily(url) }
+    val morePathData = Transformations.switchMap(moreLiveData) { url -> DailyRepo.loadMoreDaily(url) }
     fun loadMore(url: String) {
         moreLiveData.value = url
     }

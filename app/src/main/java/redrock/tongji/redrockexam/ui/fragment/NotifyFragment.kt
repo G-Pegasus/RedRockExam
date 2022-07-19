@@ -51,27 +51,27 @@ class NotifyFragment : BaseBindVMFragment<NotifyViewModel, FragmentNotifyBinding
             }
         }
 
-        viewModel.morePathData.observerKt { result ->
-            val list = result.getOrNull()
-            if (list != null) {
-                viewModel.listData.addAll(list)
-                notifyAdapter.addMore(list)
-                notifyAdapter.notifyDataSetChanged()
-            } else {
-                this.showToast("已经没有更多了哦~")
-            }
-        }
-
-        rvNotify.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    notifyAdapter.isScrolling = false
-                    viewModel.loadMore(viewModel.listData[viewModel.listData.size - 1].nextUrl)
-                } else {
-                    notifyAdapter.isScrolling = true
-                }
-            }
-        })
+//        viewModel.morePathData.observerKt { result ->
+//            val list = result.getOrNull()
+//            if (list != null) {
+//                viewModel.listData.addAll(list)
+//                notifyAdapter.addMore(list)
+//                notifyAdapter.notifyDataSetChanged()
+//            } else {
+//                this.showToast("已经没有更多了哦~")
+//            }
+//        }
+//
+//        rvNotify.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                    notifyAdapter.isScrolling = false
+//                    viewModel.loadMore(viewModel.listData[viewModel.listData.size - 1].nextUrl)
+//                } else {
+//                    notifyAdapter.isScrolling = true
+//                }
+//            }
+//        })
     }
 
     override fun lazyLoadData() {

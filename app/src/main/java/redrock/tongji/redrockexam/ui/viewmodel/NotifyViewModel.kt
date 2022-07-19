@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import redrock.tongji.lib_base.base.BaseViewModel
 import redrock.tongji.redrockexam.bean.NotifyData
+import redrock.tongji.redrockexam.logic.repository.NotifyRepo
 import redrock.tongji.redrockexam.logic.repository.Repository
 
 /**
@@ -16,7 +17,7 @@ class NotifyViewModel : BaseViewModel() {
     val listData = mutableListOf<NotifyData>()
     private val notifyLiveData = MutableLiveData<Int>()
     val notifyPathData =
-        Transformations.switchMap(notifyLiveData) { Repository.loadNotify() }
+        Transformations.switchMap(notifyLiveData) { NotifyRepo.loadNotify() }
 
     fun loadNotify() {
         notifyLiveData.value = 0
@@ -24,7 +25,7 @@ class NotifyViewModel : BaseViewModel() {
 
     private val moreLiveData = MutableLiveData<String>()
     val morePathData =
-        Transformations.switchMap(moreLiveData) { url -> Repository.loadMoreNotify(url) }
+        Transformations.switchMap(moreLiveData) { url -> NotifyRepo.loadMoreNotify(url) }
 
     fun loadMore(url: String) {
         moreLiveData.value = url
