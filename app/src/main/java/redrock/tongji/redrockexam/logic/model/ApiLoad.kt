@@ -27,4 +27,8 @@ object ApiLoad {
     suspend fun loadMoreNotify(url: String) = NetCreate.apiService.getMoreNotify(url).await()
 
     suspend fun loadDiscovery() = NetCreate.apiService.getDiscovery().await()
+
+    suspend fun loadWeeklyRank() = NetCreate.apiService.getWeeklyRankList().await()
+
+    suspend fun loadHistoricalRank() = NetCreate.apiService.getHistoricalRankList().await()
 }

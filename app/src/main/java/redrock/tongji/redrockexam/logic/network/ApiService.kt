@@ -49,6 +49,7 @@ interface ApiService {
     @GET
     fun getMoreTagRec(@Url url: String): Call<TagBean>
 
+    // 获取通知
     @GET("v3/messages")
     fun getNotify(
         @Query("udid") udid: String = "20d2c76ac00b4b2ea4fe0249eafb6dc470d782a5",
@@ -64,6 +65,7 @@ interface ApiService {
     @GET
     fun getMoreNotify(@Url url: String): Call<NotifyBean>
 
+    // 获取发现页数据
     @GET("v7/index/tab/discovery")
     fun getDiscovery(
         @Query("udid") udid: String = "20d2c76ac00b4b2ea4fe0249eafb6dc470d782a5",
@@ -75,4 +77,12 @@ interface ApiService {
         @Query("last_channel") last_channel: String = "xiaomi",
         @Query("system_version_code") system_version_code: String = "26"
     ): Call<DiscoveryBean>
+
+    // 获取历史排行
+    @GET("v4/rankList/videos?strategy=historical")
+    fun getHistoricalRankList(): Call<RecBean>
+
+    // 获取周排行
+    @GET("v4/rankList/videos?strategy=weekly")
+    fun getWeeklyRankList(): Call<RecBean>
 }

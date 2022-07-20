@@ -3,6 +3,7 @@ package redrock.tongji.redrockexam.ext
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -156,3 +157,5 @@ fun View.invisible() {
 fun View.visible() {
     visibility = View.VISIBLE
 }
+
+fun Int.toDp(): Float = this * Resources.getSystem().displayMetrics.density

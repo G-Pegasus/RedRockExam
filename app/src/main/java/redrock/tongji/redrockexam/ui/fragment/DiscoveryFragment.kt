@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.App
@@ -16,6 +17,7 @@ import redrock.tongji.redrockexam.databinding.FragmentDiscoveryBinding
 import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity
 import redrock.tongji.redrockexam.ui.activity.SpecialInfoActivity
+import redrock.tongji.redrockexam.ui.adapter.BannerAdapter
 import redrock.tongji.redrockexam.ui.adapter.DailyAdapter
 import redrock.tongji.redrockexam.ui.adapter.DiscoveryAdapter
 import redrock.tongji.redrockexam.ui.adapter.SpecialGridAdapter
@@ -30,6 +32,7 @@ class DiscoveryFragment : BaseBindVMFragment<DiscoveryViewModel, FragmentDiscove
 
     private lateinit var otherAdapter: DiscoveryAdapter
     private lateinit var specialAdapter: SpecialGridAdapter
+    private lateinit var bannerAdapter: BannerAdapter
     private val viewModel by lazy { ViewModelProvider(this)[DiscoveryViewModel::class.java] }
 
     override val getLayoutRes: Int
@@ -40,12 +43,32 @@ class DiscoveryFragment : BaseBindVMFragment<DiscoveryViewModel, FragmentDiscove
         viewModel.bannerPathData.observerKt { result ->
             val list = result.getOrNull()
             if (list != null) {
-                mDatabind.myBanner.initBanner(list)
-                mDatabind.myBanner.setImageLoader { imageView, url ->
-                    if (imageView != null) {
-                        Glide.with(App.context).load(url).into(imageView)
+                bannerAdapter = BannerAdapter(list)
+                mDatabind.bannerViewpager.adapter = bannerAdapter
+                mDatabind.bannerViewpager.registerOnPageChangeCallback(object :
+                    ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        mDatabind.bannerViewpager.currentItem = position
+                    }
+
+                    override fun onPageScrollStateChanged(state: Int) {
+                        //只有在空闲状态，才让自动滚动
+                        if (state == ViewPager2.SCROLL_STATE_IDLE) {
+                            if (mDatabind.bannerViewpager.currentItem == 0) {
+                                mDatabind.bannerViewpager.setCurrentItem(bannerAdapter.itemCount - 2, false)
+                            } else if (mDatabind.bannerViewpager.currentItem == bannerAdapter.itemCount - 1) {
+                                mDatabind.bannerViewpager.setCurrentItem(1, false)
+                            }
+                        }
+                    }
+                })
+                val mLooper = object : Runnable {
+                    override fun run() {
+                        mDatabind.bannerViewpager.currentItem = ++mDatabind.bannerViewpager.currentItem
+                        mDatabind.bannerViewpager.postDelayed(this, 3000)
                     }
                 }
+                mDatabind.bannerViewpager.postDelayed(mLooper, 3000)
             } else {
                 this.showToast("加载失败了哦~")
             }

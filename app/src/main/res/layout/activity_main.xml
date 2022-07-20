@@ -31,4 +31,5 @@
             app:menu="@menu/menu_navigation_fix" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

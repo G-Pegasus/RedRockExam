@@ -15,7 +15,6 @@ import redrock.tongji.redrockexam.ui.viewmodel.MainViewModel
 
 class MainActivity : BaseBindVMActivity<MainViewModel, ActivityMainBinding>() {
 
-    var exitTime = 0L
     override val getLayoutRes: Int
         get() = R.layout.activity_main
 

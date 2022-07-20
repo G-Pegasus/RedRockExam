@@ -16,13 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/Theme.AppCompat.Light.NoActionBar"
-        android:background="@mipmap/background"
+        android:background="@mipmap/beauty"
         tools:context=".SplashActivity">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="50dp"
             android:text="@string/slogan"
             android:textColor="@color/white"
             android:textSize="15sp"
