@@ -14,4 +14,5 @@
     <string name="loading">正在加载</string>
     <string name="pending">松开刷新</string>
     <string name="message">消息</string>
+    <string name="relatedview">相关视频推荐</string>
 </resources>

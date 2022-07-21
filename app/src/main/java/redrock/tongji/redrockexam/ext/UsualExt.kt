@@ -157,5 +157,3 @@ fun View.invisible() {
 fun View.visible() {
     visibility = View.VISIBLE
 }
-
-fun Int.toDp(): Float = this * Resources.getSystem().displayMetrics.density

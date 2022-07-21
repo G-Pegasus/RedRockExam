@@ -2,6 +2,7 @@ package redrock.tongji.redrockexam.logic.model
 
 import redrock.tongji.redrockexam.ext.await
 import redrock.tongji.redrockexam.logic.network.NetCreate
+import retrofit2.http.Query
 
 /**
  * @Author Tongji
@@ -31,4 +32,8 @@ object ApiLoad {
     suspend fun loadWeeklyRank() = NetCreate.apiService.getWeeklyRankList().await()
 
     suspend fun loadHistoricalRank() = NetCreate.apiService.getHistoricalRankList().await()
+
+    suspend fun loadRelated(query: String) = NetCreate.apiService.getRelated(query).await()
+
+    suspend fun loadComments(query: String) = NetCreate.apiService.getReply(query).await()
 }

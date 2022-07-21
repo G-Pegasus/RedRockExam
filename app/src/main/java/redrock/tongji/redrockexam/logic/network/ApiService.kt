@@ -85,4 +85,12 @@ interface ApiService {
     // 获取周排行
     @GET("v4/rankList/videos?strategy=weekly")
     fun getWeeklyRankList(): Call<RecBean>
+
+    // 获取相关视频
+    @GET("v4/video/related")
+    fun getRelated(@Query("id") id: String): Call<RelatedBean>
+
+    // 获取评论
+    @GET("v2/replies/video")
+    fun getReply(@Query("videoId") videoId: String): Call<CommentBean>
 }
