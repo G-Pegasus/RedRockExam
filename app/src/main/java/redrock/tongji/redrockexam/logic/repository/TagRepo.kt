@@ -79,15 +79,14 @@ object TagRepo {
                 )
                 list.add(tagRecData)
             }
-
-            list.add(TagRecData(
-                "滑到底啦~",
-                "", "", 0, "", "", "", "", "", "",
-                "textCard",
-                response.nextPageUrl, 0, 0, 0, 0
-            ))
         }
 
+        list.add(TagRecData(
+            "滑到底啦~",
+            "", "", 0, "", "", "", "", "", "",
+            "textCard",
+            response.nextPageUrl, 0, 0, 0, 0
+        ))
         Result.success(list)
     }
 

@@ -34,4 +34,8 @@ object ApiLoad {
     suspend fun loadRelated(query: String) = NetCreate.apiService.getRelated(query).await()
 
     suspend fun loadComments(query: String) = NetCreate.apiService.getReply(query).await()
+
+    suspend fun loadSquare() = NetCreate.apiService.getSquare().await()
+
+    suspend fun loadMoreSquare(url: String) = NetCreate.apiService.getMoreSquare(url).await()
 }

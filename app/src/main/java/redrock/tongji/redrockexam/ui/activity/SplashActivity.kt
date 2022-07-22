@@ -18,7 +18,7 @@ class SplashActivity : BaseBindActivity<ActivitySplashBinding>() {
         actionBar?.hide()
         mBind.context = this
         lifecycleScope.launchWhenCreated {
-            delay(1000)
+            delay(2000)
             startActivity<MainActivity>()
             finish()
         }

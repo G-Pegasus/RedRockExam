@@ -10,8 +10,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.*
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -170,6 +172,23 @@ fun RecyclerView.initFloatBtn(floatBtn: FloatingActionButton) {
         } else {
             smoothScrollToPosition(0)//有滚动动画返回到顶部
         }
+    }
+}
+
+fun RecyclerView.initFloatBtnGrid(floatBtn: FloatingActionButton) {
+    // 监听recyclerview滑动到顶部的时候，把向上返回顶部的按钮隐藏
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        @SuppressLint("RestrictedApi")
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            if (!canScrollVertically(-1)) {
+                floatBtn.visibility = View.INVISIBLE
+            }
+        }
+    })
+    floatBtn.backgroundTintList = ColorUtil.getOneColorStateList(App.context)
+    floatBtn.setOnClickListener {
+        smoothScrollToPosition(0)//有滚动动画返回到顶部
     }
 }
 

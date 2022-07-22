@@ -16,17 +16,19 @@
         android:theme="@style/Theme.RedRockExam"
         tools:targetApi="n">
         <activity
-            android:name=".ui.activity.SpecialInfoActivity"
-            android:theme="@style/ImageTranslucentTheme"
-            android:exported="false" />
-
-        <activity
-            android:name=".ui.activity.PlayVideoActivity"
-            android:screenOrientation="fullSensor"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:name=".ui.activity.PhotoShowActivity"
             android:exported="false"
             android:theme="@style/ImageTranslucentTheme"/>
-
+        <activity
+            android:name=".ui.activity.SpecialInfoActivity"
+            android:exported="false"
+            android:theme="@style/ImageTranslucentTheme" />
+        <activity
+            android:name=".ui.activity.PlayVideoActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:exported="false"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/ImageTranslucentTheme" />
         <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true"
@@ -37,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="false" />

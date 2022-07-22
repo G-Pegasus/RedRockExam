@@ -44,8 +44,9 @@ class App : Application(), ViewModelStoreOwner {
         context = applicationContext
         mAppViewModelStore = ViewModelStore()
         appViewModelInstance = getAppViewModelProvider()[AppViewModel::class.java]
-        //IjkPlayerManager.setLogLevel(if (BuildConfig.DEBUG) IjkMediaPlayer.IJK_LOG_WARN else IjkMediaPlayer.IJK_LOG_SILENT)
     }
+
+
 
     override fun getViewModelStore(): ViewModelStore {
         return mAppViewModelStore

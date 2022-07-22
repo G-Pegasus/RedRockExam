@@ -66,7 +66,7 @@ class DiscoveryFragment : BaseBindVMFragment<DiscoveryViewModel, FragmentDiscove
                 })
                 val mLooper = object : Runnable {
                     override fun run() {
-                        mDatabind.bannerViewpager.currentItem = ++mDatabind.bannerViewpager.currentItem
+                        mDatabind.bannerViewpager.currentItem = ++ mDatabind.bannerViewpager.currentItem
                         mDatabind.bannerViewpager.postDelayed(this, 3000)
                     }
                 }

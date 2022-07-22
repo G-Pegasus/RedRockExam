@@ -1,22 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我是我的"
-            android:textSize="18sp"/>
+        <RelativeLayout
+            android:id="@+id/root_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_user_portrait"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="40dp"
+                android:src="@mipmap/portrait"
+                app:shapeAppearanceOverlay="@style/circleImageStyle" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="55dp"
+                android:layout_toEndOf="@+id/iv_user_portrait"
+                android:text="可莉"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_user_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_user_name"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/iv_user_portrait"
+                android:text="想陪可莉去炸鱼~"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_below="@+id/root_user"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/root_user_like"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv_user_like"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="36dp"
+                        android:src="@mipmap/user_like"
+                        android:layout_marginStart="15dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的喜欢"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@+id/iv_user_like"
+                        android:layout_marginTop="38dp"
+                        android:textSize="14sp"
+                        android:layout_marginStart="15dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/root_app_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv_app_color"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@mipmap/app_color"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="25dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="主题颜色"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/iv_app_color"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="27dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/root_author_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv_author_info"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@mipmap/about_author"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="25dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关于作者"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/iv_author_info"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="27dp"/>
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/logo"
+                    android:contentDescription="@string/todo" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
 
 </layout>

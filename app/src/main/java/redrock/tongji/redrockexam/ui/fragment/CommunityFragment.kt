@@ -19,11 +19,13 @@ class CommunityFragment : BaseBindVMFragment<CommunityViewModel, FragmentCommuni
 
     override fun initView() {
         val fragments = ArrayList<Fragment>()
-        val tabTitles = arrayListOf("发现", "人气")
+        val tabTitles = arrayListOf("广场", "发现", "人气")
+        fragments.add(SquareFragment())
         fragments.add(DiscoveryFragment())
         fragments.add(PopularityFragment())
         mDatabind.vpCommunity.init(this, fragments)
-        mDatabind.vpCommunity.offscreenPageLimit = 2
+        mDatabind.vpCommunity.offscreenPageLimit = 3
+        mDatabind.vpCommunity.currentItem = 1
         TabLayoutMediator(mDatabind.tbCommunity, mDatabind.vpCommunity, true, true) {
                 tab, position ->
             tab.text = tabTitles[position]

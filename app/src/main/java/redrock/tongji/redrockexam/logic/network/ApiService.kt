@@ -90,4 +90,12 @@ interface ApiService {
     // 获取评论
     @GET("v2/replies/video")
     fun getReply(@Query("videoId") videoId: String): Call<CommentBean>
+
+    // 获取广场界面数据
+    @GET("v7/community/tab/rec")
+    fun getSquare(): Call<SquareBean>
+
+    // 获取更多数据
+    @GET
+    fun getMoreSquare(@Url url: String): Call<SquareBean>
 }
