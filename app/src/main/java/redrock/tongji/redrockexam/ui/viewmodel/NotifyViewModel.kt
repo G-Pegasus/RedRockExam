@@ -5,7 +5,6 @@ import androidx.lifecycle.Transformations
 import redrock.tongji.lib_base.base.BaseViewModel
 import redrock.tongji.redrockexam.bean.NotifyData
 import redrock.tongji.redrockexam.logic.repository.NotifyRepo
-import redrock.tongji.redrockexam.logic.repository.Repository
 
 /**
  * @Author Tongji

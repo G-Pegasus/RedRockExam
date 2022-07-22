@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -84,11 +86,17 @@ class PlayVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>() {
     private fun initRV() {
         rvRelated.layoutManager = LinearLayoutManager(App.context)
         viewModel.loadRelated(id)
-        viewModel.relatedPathData.observe(this, Observer { result ->
+        viewModel.relatedPathData.observe(this) { result ->
             val list = result.getOrNull()
             if (list != null) {
                 val relatedAdapter = RelatedAdapter(App.context, list)
                 rvRelated.adapter = relatedAdapter
+                rvRelated.layoutAnimation = LayoutAnimationController(
+                    AnimationUtils.loadAnimation(
+                        App.context,
+                        R.anim.animation
+                    )
+                )
                 relatedAdapter.setOnItemClickListener(object : RelatedAdapter.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
                         val intent = Intent(this@PlayVideoActivity, PlayVideoActivity::class.java)
@@ -106,17 +114,17 @@ class PlayVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>() {
             } else {
                 this.showToast("找不到相关视频诶~")
             }
-        })
+        }
 
         rvComment.layoutManager = LinearLayoutManager(App.context)
-        viewModel.replyPathData.observe(this, Observer { result ->
+        viewModel.replyPathData.observe(this) { result ->
             val list = result.getOrNull()
             if (list != null) {
                 rvComment.adapter = CommentsAdapter(App.context, list)
             } else {
                 this.showToast("该视频没有评论哦~")
             }
-        })
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -138,6 +146,8 @@ class PlayVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>() {
         blurred = videoData.blurred
         cover = videoData.url
         id = videoData.id
+
+        // 设置背景缩略图
         Glide.with(App.context).asBitmap().load(blurred).into(object : SimpleTarget<Bitmap>() {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                 val drawable =  BitmapDrawable(resources, resource)

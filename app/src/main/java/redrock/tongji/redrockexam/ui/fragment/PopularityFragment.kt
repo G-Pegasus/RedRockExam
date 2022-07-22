@@ -3,6 +3,8 @@ package redrock.tongji.redrockexam.ui.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import redrock.tongji.lib_base.base.BaseBindVMFragment
@@ -31,6 +33,7 @@ class PopularityFragment : BaseBindVMFragment<PopularityViewModel, FragmentPopul
     override fun initView() {
         val rvWeekly = mDatabind.recyclerViewWeekly
         rvWeekly.layoutManager = LinearLayoutManager(App.context)
+        rvWeekly.layoutAnimation = LayoutAnimationController(AnimationUtils.loadAnimation(App.context, R.anim.animation))
         viewModel.loadPopularData()
         viewModel.popularPathData.observerKt { result ->
             val list = result.getOrNull()

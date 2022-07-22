@@ -1,5 +1,6 @@
 package redrock.tongji.redrockexam.ext
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -9,11 +10,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.ui.fragment.CommunityFragment
 import redrock.tongji.redrockexam.ui.fragment.HomeFragment
@@ -102,6 +105,7 @@ fun ViewPager2.initMain(activity: AppCompatActivity): ViewPager2 {
     return this
 }
 
+// 初始化底部导航
 fun BottomNavigationView.init(navigationItemSelectedAction: (Int) -> Unit) : BottomNavigationView {
     itemIconTintList = ColorUtil.getColorStateList(ColorUtil.getColor(App.context))
     itemTextColor = ColorUtil.getColorStateList(App.context)
@@ -144,6 +148,29 @@ fun Context.showToast(content: String): Toast {
     val toast = Toast.makeText(this.applicationContext, content, Toast.LENGTH_SHORT)
     toast.show()
     return toast
+}
+
+fun RecyclerView.initFloatBtn(floatBtn: FloatingActionButton) {
+    // 监听recyclerview滑动到顶部的时候，把向上返回顶部的按钮隐藏
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        @SuppressLint("RestrictedApi")
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            if (!canScrollVertically(-1)) {
+                floatBtn.visibility = View.INVISIBLE
+            }
+        }
+    })
+    floatBtn.backgroundTintList = ColorUtil.getOneColorStateList(App.context)
+    floatBtn.setOnClickListener {
+        val layoutManager = layoutManager as LinearLayoutManager
+        // 如果当前recyclerview 最后一个视图位置的索引大于等于20，则迅速返回顶部，否则带有滚动动画效果返回到顶部
+        if (layoutManager.findLastVisibleItemPosition() >= 20) {
+            scrollToPosition(0)//没有动画迅速返回到顶部
+        } else {
+            smoothScrollToPosition(0)//有滚动动画返回到顶部
+        }
+    }
 }
 
 fun View.gone() {

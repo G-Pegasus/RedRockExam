@@ -46,9 +46,6 @@ interface ApiService {
         @Query("system_version_code") system_version_code: String = "26"
     ): Call<TagBean>
 
-    @GET
-    fun getMoreTagRec(@Url url: String): Call<TagBean>
-
     // 获取通知
     @GET("v3/messages")
     fun getNotify(

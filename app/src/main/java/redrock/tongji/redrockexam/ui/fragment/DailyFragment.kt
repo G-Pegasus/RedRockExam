@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
+import androidx.core.view.ViewCompat
+import androidx.core.view.ViewCompat.canScrollVertically
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,9 +15,9 @@ import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.CommonData
-import redrock.tongji.redrockexam.bean.RecData
 import redrock.tongji.redrockexam.databinding.FragmentDailyBinding
 import redrock.tongji.redrockexam.ext.init
+import redrock.tongji.redrockexam.ext.initFloatBtn
 import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity
 import redrock.tongji.redrockexam.ui.adapter.DailyAdapter
@@ -45,12 +49,20 @@ class DailyFragment : BaseBindVMFragment<DailyViewModel, FragmentDailyBinding>()
                 viewModel.listData.addAll(list)
                 dailyAdapter = context?.let { DailyAdapter(it, list) }!!
                 rvDaily.adapter = dailyAdapter
+
                 // 下拉刷新
                 mDatabind.includeList.includeRecyclerview.swipeRefresh.init {
                     viewModel.loadDaily()
                     dailyAdapter.notifyDataSetChanged()
                     mDatabind.includeList.includeRecyclerview.swipeRefresh.isRefreshing = false
                 }
+
+                // 设置列表加载动画
+                rvDaily.layoutAnimation = LayoutAnimationController(AnimationUtils.loadAnimation(App.context, R.anim.animation))
+
+                // 初始化快速返回顶部按钮
+                rvDaily.initFloatBtn(mDatabind.includeList.floatbtn)
+
                 dailyAdapter.setOnItemClickListener(object : DailyAdapter.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
                         val intent = Intent(context, PlayVideoActivity::class.java)
@@ -75,28 +87,27 @@ class DailyFragment : BaseBindVMFragment<DailyViewModel, FragmentDailyBinding>()
             }
         }
 
-//        viewModel.morePathData.observerKt { result ->
-//            val list = result.getOrNull()
-//            if (list != null) {
-//                viewModel.listData.addAll(list)
-//                dailyAdapter.addMore(list)
-//                dailyAdapter.notifyDataSetChanged()
-//            } else {
-//                this.showToast("已经没有更多了哦~")
-//            }
-//        }
-//
-//        // 停止滑动时刷新数据，滑动卡顿严重，留待以后解决
-//        rvDaily.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-//                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-//                    dailyAdapter.isScrolling = false
-//                    viewModel.loadMore(viewModel.listData[viewModel.listData.size - 1].nextUrl)
-//                } else {
-//                    dailyAdapter.isScrolling = true
-//                }
-//            }
-//        })
+        viewModel.morePathData.observerKt { result ->
+            val list = result.getOrNull()
+            if (list != null) {
+                viewModel.listData.addAll(list)
+                dailyAdapter.addMore(list)
+                dailyAdapter.notifyDataSetChanged()
+            } else {
+                this.showToast("已经没有更多了哦~")
+            }
+        }
+
+        // 滑动到最后一个时加载下一页
+        rvDaily.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!canScrollVertically(recyclerView, 1)) {
+                    viewModel.loadMore(viewModel.listData[viewModel.listData.size - 1].nextUrl)
+                    this@DailyFragment.showToast("加载完成！")
+                }
+            }
+        })
     }
 
 }

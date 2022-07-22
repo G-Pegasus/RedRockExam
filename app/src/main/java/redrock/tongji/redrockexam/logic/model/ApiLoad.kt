@@ -19,8 +19,6 @@ object ApiLoad {
 
     suspend fun loadTagRec(id: String) = NetCreate.apiService.getTagRec(id).await()
 
-    suspend fun loadMoreTagRec(url: String) = NetCreate.apiService.getMoreTagRec(url).await()
-
     suspend fun loadTagInfo(id: String) = NetCreate.apiService.getTagInfo(id).await()
 
     suspend fun loadNotify() = NetCreate.apiService.getNotify().await()

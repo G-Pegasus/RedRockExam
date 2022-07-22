@@ -139,6 +139,10 @@ class RecommendAdapter(private val context: Context, private val mList: MutableL
         this.onItemClickListener = listener
     }
 
+    fun addMore(moreList: MutableList<RecData>) {
+        mList?.addAll(moreList)
+    }
+
     override fun getItemCount(): Int {
         if (mList != null) return mList.size
         return 0

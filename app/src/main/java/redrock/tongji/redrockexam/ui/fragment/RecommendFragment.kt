@@ -4,14 +4,20 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
+import androidx.core.view.ViewCompat
+import androidx.core.view.ViewCompat.canScrollVertically
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.CommonData
 import redrock.tongji.redrockexam.databinding.FragmentRecBinding
 import redrock.tongji.redrockexam.ext.init
+import redrock.tongji.redrockexam.ext.initFloatBtn
 import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity
 import redrock.tongji.redrockexam.ui.adapter.RecommendAdapter
@@ -43,12 +49,20 @@ class RecommendFragment : BaseBindVMFragment<RecommendViewModel, FragmentRecBind
                 viewModel.listData.addAll(list)
                 recAdapter = RecommendAdapter(App.context, list)
                 rvRec.adapter = recAdapter
+
+                // 初始化快速返回顶部按钮
+                rvRec.initFloatBtn(mDatabind.includeList.floatbtn)
+
+                // 设置列表加载动画
+                rvRec.layoutAnimation = LayoutAnimationController(AnimationUtils.loadAnimation(App.context, R.anim.animation))
+
                 // 下拉刷新
                 mDatabind.includeList.includeRecyclerview.swipeRefresh.init {
                     viewModel.loadRec()
                     recAdapter.notifyDataSetChanged()
                     mDatabind.includeList.includeRecyclerview.swipeRefresh.isRefreshing = false
                 }
+
                 recAdapter.setOnItemClickListener(object : RecommendAdapter.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
                         val intent = Intent(context, PlayVideoActivity::class.java)
@@ -72,6 +86,28 @@ class RecommendFragment : BaseBindVMFragment<RecommendViewModel, FragmentRecBind
                 this.showToast("网络好像不太好？555~")
             }
         }
+
+        viewModel.morePathData.observerKt { result ->
+            val list = result.getOrNull()
+            if (list != null) {
+                viewModel.listData.addAll(list)
+                recAdapter.addMore(list)
+                recAdapter.notifyDataSetChanged()
+            } else {
+                this.showToast("没有更多了哦~")
+            }
+        }
+
+        // 滑动到最后一个时加载下一页
+        rvRec.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!canScrollVertically(recyclerView, 1)) {
+                    viewModel.loadMore(viewModel.listData[viewModel.listData.size - 1].nextUrl)
+                    this@RecommendFragment.showToast("加载完成！")
+                }
+            }
+        })
     }
 
 }

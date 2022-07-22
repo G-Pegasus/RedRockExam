@@ -57,6 +57,13 @@ object ColorUtil {
         return ColorStateList(states, colors)
     }
 
+    fun getOneColorStateList(context: Context): ColorStateList {
+        val colors = intArrayOf(getColor(context))
+        val states = arrayOfNulls<IntArray>(1)
+        states[0] = intArrayOf()
+        return ColorStateList(states, colors)
+    }
+
     fun getOneColorStateList(color: Int): ColorStateList {
         val colors = intArrayOf(color)
         val states = arrayOfNulls<IntArray>(1)

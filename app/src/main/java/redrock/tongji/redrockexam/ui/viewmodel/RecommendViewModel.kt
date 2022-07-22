@@ -20,4 +20,10 @@ class RecommendViewModel : BaseViewModel() {
         recLiveData.value = 0
     }
 
+    private val moreLiveData = MutableLiveData<String>()
+    val morePathData = Transformations.switchMap(moreLiveData) {url-> RecRepo.loadMore(url) }
+    fun loadMore(url:String) {
+        moreLiveData.value = url
+    }
+
 }

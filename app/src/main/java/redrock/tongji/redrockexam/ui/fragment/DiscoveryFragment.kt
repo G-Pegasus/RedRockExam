@@ -3,6 +3,8 @@ package redrock.tongji.redrockexam.ui.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -78,6 +80,7 @@ class DiscoveryFragment : BaseBindVMFragment<DiscoveryViewModel, FragmentDiscove
         val specialLayoutManager = GridLayoutManager(App.context, 2)
         specialLayoutManager.orientation = GridLayoutManager.HORIZONTAL
         rvSpecial.layoutManager = specialLayoutManager
+        rvSpecial.layoutAnimation = LayoutAnimationController(AnimationUtils.loadAnimation(App.context, R.anim.animation))
         viewModel.specialPathData.observerKt { result ->
             val list = result.getOrNull()
             if (list != null) {

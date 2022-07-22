@@ -20,6 +20,13 @@
         app:shapeAppearanceOverlay="@style/roundedCornerImageStyle" />
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="10dp"
+        android:src="@mipmap/handpick"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_video_portrait"
         android:layout_width="50dp"
         android:layout_height="50dp"

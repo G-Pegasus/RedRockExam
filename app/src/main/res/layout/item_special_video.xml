@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_special_portrait"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:src="@mipmap/portrait"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:shapeAppearanceOverlay="@style/circleImageStyle"/>
+
+    <TextView
+        android:id="@+id/tv_special_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/iv_special_portrait"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="6dp"
+        tools:text="可莉"/>
+
+    <LinearLayout
+        android:id="@+id/linear_special"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/iv_special_portrait"
+        android:layout_below="@+id/tv_special_author"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_special_des"
+            android:layout_width="match_parent"
+            tools:text="刘同骥爱可莉"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"
+            android:textSize="13sp"
+            android:layout_marginStart="6dp"
+            android:layout_height="30dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_special_content"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linear_special"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:lineSpacingExtra="5dp"
+        android:textColor="#393333"
+        android:textSize="15sp"
+        tools:text="刘同骥爱可莉"/>
+
+    <Button
+        android:id="@+id/btn_more"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:text="更多"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/tv_special_content"
+        android:textSize="13sp"
+        android:background="@null"/>
+    <!--
+    <Button
+        android:id="@+id/btn_less"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:text="收起"
+        android:visibility="invisible"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/tv_special_content"
+        android:textSize="13sp"
+        android:background="@null"/> -->
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_special_bg"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_below="@+id/btn_more"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/video_back"
+        app:shapeAppearanceOverlay="@style/roundedCornerImageStyle"
+        android:layout_marginTop="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_special_bg"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/like"/>
+
+            <TextView
+                android:id="@+id/tv_like_count"
+                android:layout_width="wrap_content"
+                tools:text="120"
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/comment"/>
+
+            <TextView
+                android:id="@+id/tv_comments_count"
+                android:layout_width="wrap_content"
+                tools:text="120"
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/share"/>
+
+            <TextView
+                android:id="@+id/tv_share_count"
+                android:layout_width="wrap_content"
+                tools:text="120"
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
