@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/bottom_selector.xml" value="0.1295" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/dialog_bg.xml" value="0.147" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/ic_arrow_downward_black_24dp.xml" value="0.151" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/ic_arrow_upward_black_24dp.xml" value="0.151" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/selector_banner_point.xml" value="0.151" />
@@ -15,6 +16,8 @@
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_special_info.xml" value="0.24320652173913043" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_splash.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/banner_indicator.xml" value="0.2391304347826087" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/dialog_author.xml" value="0.23641304347826086" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/dialot_color.xml" value="0.264" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_community.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_community_square.xml" value="0.2223731884057971" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_daily.xml" value="0.24818840579710144" />

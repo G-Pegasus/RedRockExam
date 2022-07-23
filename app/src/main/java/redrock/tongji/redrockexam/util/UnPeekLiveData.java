@@ -30,10 +30,6 @@ public class UnPeekLiveData<T> extends LiveData<T> {
 
     private final HashMap<Integer, Boolean> observers = new HashMap<>();
 
-    /**
-     * postValue 最终还是会经过这里
-     * @param value value
-     */
     @Override
     public void setValue(T value) {
         mCurrentVersion.getAndIncrement();
@@ -44,13 +40,6 @@ public class UnPeekLiveData<T> extends LiveData<T> {
     public void observeInActivity(@NonNull AppCompatActivity activity, @NonNull Observer<? super T> observer) {
         Integer storeId = System.identityHashCode(activity.getViewModelStore());
         observe(storeId, activity, observer);
-    }
-
-    // 在Fragment中使用
-    public void observeInFragment(@NonNull Fragment fragment, @NonNull Observer<? super T> observer) {
-        LifecycleOwner owner = fragment.getViewLifecycleOwner();
-        Integer storeId = System.identityHashCode(fragment.getViewModelStore());
-        observe(storeId, owner, observer);
     }
 
     @SuppressWarnings("ConstantConditions")

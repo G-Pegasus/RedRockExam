@@ -4,8 +4,10 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.R
+import redrock.tongji.redrockexam.appViewModel
 import redrock.tongji.redrockexam.databinding.FragmentCommunityBinding
 import redrock.tongji.redrockexam.ext.init
+import redrock.tongji.redrockexam.ext.setUiTheme
 import redrock.tongji.redrockexam.ui.viewmodel.CommunityViewModel
 
 /**
@@ -30,6 +32,12 @@ class CommunityFragment : BaseBindVMFragment<CommunityViewModel, FragmentCommuni
                 tab, position ->
             tab.text = tabTitles[position]
         }.attach()
+
+        appViewModel.run {
+            appColor.observe(this@CommunityFragment) {
+                setUiTheme(it, mDatabind.tbCommunity)
+            }
+        }
     }
 
 }

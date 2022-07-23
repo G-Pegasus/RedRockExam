@@ -6,9 +6,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import redrock.tongji.lib_base.base.BaseBindVMActivity
 import redrock.tongji.redrockexam.R
+import redrock.tongji.redrockexam.appViewModel
 import redrock.tongji.redrockexam.databinding.ActivityMainBinding
 import redrock.tongji.redrockexam.ext.init
 import redrock.tongji.redrockexam.ext.initMain
+import redrock.tongji.redrockexam.ext.setUiTheme
 import redrock.tongji.redrockexam.logic.network.NetState
 import redrock.tongji.redrockexam.logic.network.NetStateManager
 import redrock.tongji.redrockexam.ui.viewmodel.MainViewModel
@@ -29,6 +31,15 @@ class MainActivity : BaseBindVMActivity<MainViewModel, ActivityMainBinding>() {
                 R.id.navigation_community -> mBind.mainViewpager.setCurrentItem(1, false)
                 R.id.navigation_notify -> mBind.mainViewpager.setCurrentItem(2, false)
                 R.id.navigation_mine -> mBind.mainViewpager.setCurrentItem(3, false)
+            }
+        }
+
+        appViewModel.run {
+            appColor.observe(this@MainActivity) {
+                window.statusBarColor = it
+                setUiTheme(
+                    it, mBind.navView
+                )
             }
         }
     }

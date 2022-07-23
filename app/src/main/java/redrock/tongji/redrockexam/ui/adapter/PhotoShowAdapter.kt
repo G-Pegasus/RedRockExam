@@ -17,6 +17,8 @@ import redrock.tongji.redrockexam.R
 class PhotoShowAdapter(private val data: ArrayList<String>) :
     RecyclerView.Adapter<PhotoShowAdapter.InnerHolder>() {
 
+    private lateinit var onItemClickListener: OnItemClickListener
+
     inner class InnerHolder(view: View) : RecyclerView.ViewHolder(view) {
         val showPhoto: PhotoView = view.findViewById(R.id.photo_view)
     }
@@ -29,8 +31,23 @@ class PhotoShowAdapter(private val data: ArrayList<String>) :
 
     override fun onBindViewHolder(holder: InnerHolder, position: Int) {
         holder.apply {
-            Glide.with(App.context).load(data[position]).centerCrop().into(showPhoto)
+            Glide.with(App.context).load(data[position]).into(showPhoto)
+            showPhoto.setOnClickListener {
+                onItemClickListener.onItemClick(
+                    holder.itemView,
+                    position
+                )
+            }
         }
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.onItemClickListener = listener
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(view: View, position: Int)
+        fun onItemLongClick(view: View, position: Int)
     }
 
     override fun getItemCount(): Int = data.size

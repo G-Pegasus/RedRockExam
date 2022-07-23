@@ -7,6 +7,7 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/root_mine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary">
@@ -73,20 +74,21 @@
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/iv_user_like"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_marginTop="36dp"
                         android:src="@mipmap/user_like"
                         android:layout_marginStart="15dp"/>
 
                     <TextView
+                        android:id="@+id/tv_my_like"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="我的喜欢"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/iv_user_like"
-                        android:layout_marginTop="38dp"
-                        android:textSize="14sp"
+                        android:layout_marginTop="40dp"
+                        android:textSize="16sp"
                         android:layout_marginStart="15dp"/>
 
                 </RelativeLayout>
@@ -98,21 +100,22 @@
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/iv_app_color"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@mipmap/app_color"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="25dp"/>
+                        android:layout_marginTop="30dp"/>
 
                     <TextView
+                        android:id="@+id/tv_theme_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="主题颜色"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@id/iv_app_color"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="27dp"/>
+                        android:layout_marginTop="34dp"/>
 
                 </RelativeLayout>
 
@@ -123,21 +126,22 @@
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/iv_author_info"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@mipmap/about_author"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="25dp"/>
+                        android:layout_marginTop="30dp"/>
 
                     <TextView
+                        android:id="@+id/tv_about_author"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="关于作者"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@id/iv_author_info"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="27dp"/>
+                        android:layout_marginTop="34dp"/>
 
                 </RelativeLayout>
 

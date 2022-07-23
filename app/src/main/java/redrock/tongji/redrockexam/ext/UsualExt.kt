@@ -5,10 +5,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Color
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +22,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabLayout
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.ui.fragment.CommunityFragment
 import redrock.tongji.redrockexam.ui.fragment.HomeFragment
@@ -167,7 +171,7 @@ fun RecyclerView.initFloatBtn(floatBtn: FloatingActionButton) {
     floatBtn.setOnClickListener {
         val layoutManager = layoutManager as LinearLayoutManager
         // 如果当前recyclerview 最后一个视图位置的索引大于等于20，则迅速返回顶部，否则带有滚动动画效果返回到顶部
-        if (layoutManager.findLastVisibleItemPosition() >= 20) {
+        if (layoutManager.findLastVisibleItemPosition() >= 30) {
             scrollToPosition(0)//没有动画迅速返回到顶部
         } else {
             smoothScrollToPosition(0)//有滚动动画返回到顶部
@@ -189,6 +193,29 @@ fun RecyclerView.initFloatBtnGrid(floatBtn: FloatingActionButton) {
     floatBtn.backgroundTintList = ColorUtil.getOneColorStateList(App.context)
     floatBtn.setOnClickListener {
         smoothScrollToPosition(0)//有滚动动画返回到顶部
+    }
+}
+
+fun setUiTheme(color: Int, vararg anyList: Any?) {
+    anyList.forEach { view ->
+        view?.let {
+            when (it) {
+                is FloatingActionButton -> it.backgroundTintList =
+                    ColorUtil.getOneColorStateList(color)
+                is SwipeRefreshLayout -> it.setColorSchemeColors(color)
+                is BottomNavigationView -> {
+                    it.itemIconTintList = ColorUtil.getColorStateList(color)
+                    it.itemTextColor = ColorUtil.getColorStateList(color)
+                }
+                is LinearLayout -> it.setBackgroundColor(color)
+                is RelativeLayout -> it.setBackgroundColor(color)
+                is TextView -> it.setTextColor(color)
+                is TabLayout -> {
+                    it.setSelectedTabIndicatorColor(color)
+                    it.setTabTextColors(Color.parseColor("#aaaaaa"), color)
+                }
+            }
+        }
     }
 }
 

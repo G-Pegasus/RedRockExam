@@ -28,7 +28,7 @@ class App : Application(), ViewModelStoreOwner {
     }
 
     // 获取全局的 ViewModel
-    fun getAppViewModelProvider(): ViewModelProvider {
+    private fun getAppViewModelProvider(): ViewModelProvider {
         return ViewModelProvider(this, this.getAppFactory())
     }
 
@@ -45,8 +45,6 @@ class App : Application(), ViewModelStoreOwner {
         mAppViewModelStore = ViewModelStore()
         appViewModelInstance = getAppViewModelProvider()[AppViewModel::class.java]
     }
-
-
 
     override fun getViewModelStore(): ViewModelStore {
         return mAppViewModelStore

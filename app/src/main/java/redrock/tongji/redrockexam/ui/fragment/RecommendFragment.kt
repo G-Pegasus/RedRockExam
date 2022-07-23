@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
+import redrock.tongji.redrockexam.appViewModel
 import redrock.tongji.redrockexam.bean.CommonData
 import redrock.tongji.redrockexam.databinding.FragmentRecBinding
 import redrock.tongji.redrockexam.ext.init
 import redrock.tongji.redrockexam.ext.initFloatBtn
+import redrock.tongji.redrockexam.ext.setUiTheme
 import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity
 import redrock.tongji.redrockexam.ui.adapter.RecommendAdapter
@@ -108,6 +110,12 @@ class RecommendFragment : BaseBindVMFragment<RecommendViewModel, FragmentRecBind
                 }
             }
         })
+
+        appViewModel.run {
+            appColor.observe(this@RecommendFragment) {
+                setUiTheme(it, mDatabind.includeList.floatbtn, mDatabind.includeList.includeRecyclerview.swipeRefresh)
+            }
+        }
     }
 
 }

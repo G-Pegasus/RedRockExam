@@ -70,20 +70,4 @@ object ColorUtil {
         states[0] = intArrayOf()
         return ColorStateList(states, colors)
     }
-
-    fun setUiTheme(color: Int, vararg anyList: Any?) {
-        anyList.forEach { view ->
-            view?.let {
-                when (it) {
-                    is FloatingActionButton -> it.backgroundTintList = getOneColorStateList(color)
-                    is SwipeRefreshLayout -> it.setColorSchemeColors(color)
-                    is BottomNavigationView -> {
-                        it.itemIconTintList = getColorStateList(color)
-                        it.itemTextColor = getColorStateList(color)
-                    }
-                    is Toolbar -> it.setBackgroundColor(color)
-                }
-            }
-        }
-    }
 }

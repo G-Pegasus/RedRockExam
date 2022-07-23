@@ -5,9 +5,11 @@ import com.google.android.material.tabs.TabLayoutMediator
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.lib_base.base.BaseViewModel
 import redrock.tongji.redrockexam.R
+import redrock.tongji.redrockexam.appViewModel
 import redrock.tongji.redrockexam.databinding.FragmentHomeBinding
 import redrock.tongji.redrockexam.ext.init
 import redrock.tongji.redrockexam.ext.initMain
+import redrock.tongji.redrockexam.ext.setUiTheme
 
 /**
  * @Author Tongji
@@ -30,6 +32,12 @@ class HomeFragment : BaseBindVMFragment<BaseViewModel, FragmentHomeBinding>() {
                 tab, position ->
             tab.text = tabTitles[position]
         }.attach()
+
+        appViewModel.run {
+            appColor.observe(this@HomeFragment) {
+                setUiTheme(it, mDatabind.tbHome)
+            }
+        }
     }
 
 }

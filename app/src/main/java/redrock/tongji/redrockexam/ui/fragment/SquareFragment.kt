@@ -15,11 +15,9 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
+import redrock.tongji.redrockexam.appViewModel
 import redrock.tongji.redrockexam.databinding.FragmentCommunitySquareBinding
-import redrock.tongji.redrockexam.ext.init
-import redrock.tongji.redrockexam.ext.initFloatBtn
-import redrock.tongji.redrockexam.ext.initFloatBtnGrid
-import redrock.tongji.redrockexam.ext.showToast
+import redrock.tongji.redrockexam.ext.*
 import redrock.tongji.redrockexam.ui.activity.PhotoShowActivity
 import redrock.tongji.redrockexam.ui.adapter.SquareAdapter
 import redrock.tongji.redrockexam.ui.viewmodel.SquareViewModel
@@ -103,6 +101,16 @@ class SquareFragment : BaseBindVMFragment<SquareViewModel, FragmentCommunitySqua
                 }
             }
         })
+
+        appViewModel.run {
+            appColor.observe(this@SquareFragment) {
+                setUiTheme(
+                    it,
+                    mDatabind.includeList.floatbtn,
+                    mDatabind.includeList.includeRecyclerview.swipeRefresh
+                )
+            }
+        }
     }
 
 }

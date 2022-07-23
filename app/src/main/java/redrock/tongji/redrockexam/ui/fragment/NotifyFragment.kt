@@ -15,6 +15,7 @@ import redrock.tongji.redrockexam.appViewModel
 import redrock.tongji.redrockexam.databinding.FragmentNotifyBinding
 import redrock.tongji.redrockexam.ext.init
 import redrock.tongji.redrockexam.ext.initFloatBtn
+import redrock.tongji.redrockexam.ext.setUiTheme
 import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.adapter.NotifyAdapter
 import redrock.tongji.redrockexam.ui.viewmodel.NotifyViewModel
@@ -84,6 +85,16 @@ class NotifyFragment : BaseBindVMFragment<NotifyViewModel, FragmentNotifyBinding
                 }
             }
         })
+
+        appViewModel.run {
+            appColor.observe(this@NotifyFragment) {
+                setUiTheme(
+                    it,
+                    mDatabind.includeList.floatbtn,
+                    mDatabind.includeList.includeRecyclerview.swipeRefresh
+                )
+            }
+        }
     }
 
     override fun lazyLoadData() {
