@@ -1,8 +1,6 @@
-package redrock.tongji.redrockexam.logic.model
+package redrock.tongji.redrockexam.model.network
 
 import redrock.tongji.redrockexam.ext.await
-import redrock.tongji.redrockexam.logic.network.NetCreate
-import retrofit2.http.Query
 
 /**
  * @Author Tongji

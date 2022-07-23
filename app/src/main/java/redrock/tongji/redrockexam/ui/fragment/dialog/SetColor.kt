@@ -33,9 +33,6 @@ class SetColor : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val radioGroup: RadioGroup = view.findViewById(R.id.radio_group)
-//        val radioButton1: RadioButton = view.findViewById(R.id.btn_blue)
-//        val radioButton2: RadioButton = view.findViewById(R.id.btn_orange)
-//        val radioButton3: RadioButton = view.findViewById(R.id.btn_green)
         val tvCancel: TextView = view.findViewById(R.id.tv_cancel)
         val tvSure: TextView = view.findViewById(R.id.tv_sure)
         var setColor = 0

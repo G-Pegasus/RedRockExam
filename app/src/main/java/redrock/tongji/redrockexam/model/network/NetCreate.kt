@@ -1,4 +1,4 @@
-package redrock.tongji.redrockexam.logic.network
+package redrock.tongji.redrockexam.model.network
 
 import redrock.tongji.redrockexam.util.BASE_URL
 import retrofit2.Retrofit

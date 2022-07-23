@@ -3,7 +3,7 @@ package redrock.tongji.redrockexam.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import redrock.tongji.lib_base.base.BaseViewModel
-import redrock.tongji.redrockexam.logic.repository.PlayerRepo
+import redrock.tongji.redrockexam.model.repository.PlayerRepo
 
 /**
  * @Author Tongji

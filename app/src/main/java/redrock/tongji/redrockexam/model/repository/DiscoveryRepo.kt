@@ -1,9 +1,9 @@
-package redrock.tongji.redrockexam.logic.repository
+package redrock.tongji.redrockexam.model.repository
 
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
 import redrock.tongji.redrockexam.bean.DiscoveryData
-import redrock.tongji.redrockexam.logic.model.ApiLoad
+import redrock.tongji.redrockexam.model.network.ApiLoad
 import kotlin.coroutines.CoroutineContext
 
 /**

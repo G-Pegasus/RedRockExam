@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import redrock.tongji.lib_base.base.BaseViewModel
 import redrock.tongji.redrockexam.bean.DiscoveryData
-import redrock.tongji.redrockexam.logic.repository.DiscoveryRepo
+import redrock.tongji.redrockexam.model.repository.DiscoveryRepo
 
 /**
  * @Author Tongji

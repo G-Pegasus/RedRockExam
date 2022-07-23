@@ -1,9 +1,7 @@
 package redrock.tongji.redrockexam.ui.activity
 
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import redrock.tongji.lib_base.base.BaseBindVMActivity
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.appViewModel
@@ -11,8 +9,8 @@ import redrock.tongji.redrockexam.databinding.ActivityMainBinding
 import redrock.tongji.redrockexam.ext.init
 import redrock.tongji.redrockexam.ext.initMain
 import redrock.tongji.redrockexam.ext.setUiTheme
-import redrock.tongji.redrockexam.logic.network.NetState
-import redrock.tongji.redrockexam.logic.network.NetStateManager
+import redrock.tongji.redrockexam.model.network.NetState
+import redrock.tongji.redrockexam.model.network.NetStateManager
 import redrock.tongji.redrockexam.ui.viewmodel.MainViewModel
 
 class MainActivity : BaseBindVMActivity<MainViewModel, ActivityMainBinding>() {

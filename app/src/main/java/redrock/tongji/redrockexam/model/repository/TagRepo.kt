@@ -1,11 +1,11 @@
-package redrock.tongji.redrockexam.logic.repository
+package redrock.tongji.redrockexam.model.repository
 
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 import androidx.lifecycle.liveData
 import redrock.tongji.redrockexam.bean.TagInfoData
 import redrock.tongji.redrockexam.bean.TagRecData
-import redrock.tongji.redrockexam.logic.model.ApiLoad
+import redrock.tongji.redrockexam.model.network.ApiLoad
 
 /**
  * @Author Tongji

@@ -10,6 +10,7 @@
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/selector_banner_point.xml" value="0.151" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/shape_banner_point_bg_disable.xml" value="0.151" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/shape_banner_point_bg_enable.xml" value="0.151" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/drawable/shape_edit_style.xml" value="0.1285" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_photo_show.xml" value="0.23641304347826086" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_play_video.xml" value="0.24818840579710144" />
@@ -17,6 +18,7 @@
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/activity_splash.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/banner_indicator.xml" value="0.2391304347826087" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/dialog_author.xml" value="0.23641304347826086" />
+        <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/dialog_setting.xml" value="0.23641304347826086" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/dialot_color.xml" value="0.264" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_community.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/AndroidStudioProjects/RedRockExam/app/src/main/res/layout/fragment_community_square.xml" value="0.2223731884057971" />
