@@ -55,10 +55,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="40dp"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     tools:text="内容" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_unlike"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/like"/>
 
             </LinearLayout>
 

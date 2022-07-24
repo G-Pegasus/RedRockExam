@@ -18,14 +18,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.imageview.ShapeableImageView
 import com.shuyu.gsyvideoplayer.GSYBaseActivityDetail
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.CommonData
+import redrock.tongji.redrockexam.bean.VideoInfoBean
 import redrock.tongji.redrockexam.ext.gone
 import redrock.tongji.redrockexam.ext.showToast
+import redrock.tongji.redrockexam.model.dao.UserDataBase
+import redrock.tongji.redrockexam.model.dao.VideoInfoDatabase
 import redrock.tongji.redrockexam.ui.adapter.CommentsAdapter
 import redrock.tongji.redrockexam.ui.adapter.RelatedAdapter
 import redrock.tongji.redrockexam.ui.viewmodel.PlayVideoViewModel
@@ -33,12 +37,14 @@ import redrock.tongji.redrockexam.ui.viewmodel.PlayVideoViewModel
 class PlayVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>() {
 
     private val viewModel by lazy { ViewModelProvider(this)[PlayVideoViewModel::class.java] }
+    private val videoDao = VideoInfoDatabase.getDatabase(App.context).videoInfoDao()
     private lateinit var tvTitle: TextView
     private lateinit var tvAuthor: TextView
     private lateinit var tvContent: TextView
     private lateinit var rvRelated: RecyclerView
     private lateinit var rvComment: RecyclerView
     private lateinit var rootView: LinearLayout
+    private lateinit var ivILike: ShapeableImageView
     private var playUrl: String = ""
     private var blurred: String = ""
     private var cover: String = ""
@@ -136,6 +142,7 @@ class PlayVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>() {
         viewPlayer = findViewById(R.id.video_player)
         rvRelated = findViewById(R.id.related_video)
         rvComment = findViewById(R.id.rv_comments)
+        ivILike = findViewById(R.id.iv_unlike)
 
         val bundle = intent.extras
         val videoData: CommonData = bundle?.getSerializable("data") as CommonData
@@ -150,10 +157,22 @@ class PlayVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>() {
         // 设置背景缩略图
         Glide.with(App.context).asBitmap().load(blurred).into(object : SimpleTarget<Bitmap>() {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                val drawable =  BitmapDrawable(resources, resource)
+                val drawable = BitmapDrawable(resources, resource)
                 rootView.background = drawable
             }
         })
+
+        // 插入到数据库中
+        ivILike.setOnClickListener {
+            videoDao.insertVideo(
+                VideoInfoBean(
+                    cover, "", playUrl, videoData.title, videoData.description,
+                    videoData.time, id, blurred, videoData.author
+                )
+            )
+            it.setBackgroundResource(R.mipmap.user_like)
+        }
+
         viewPlayer.titleTextView.gone()
         viewPlayer.backButton.gone()
     }

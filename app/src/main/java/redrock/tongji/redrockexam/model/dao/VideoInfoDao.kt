@@ -1,7 +1,10 @@
 package redrock.tongji.redrockexam.model.dao
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import redrock.tongji.redrockexam.bean.VideoInfoBean
 
@@ -13,9 +16,13 @@ import redrock.tongji.redrockexam.bean.VideoInfoBean
 
 @Dao
 interface VideoInfoDao {
-    @Insert
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertVideo(video: VideoInfoBean)
 
     @Query("select * from VideoInfoBean")
-    fun loadAllVideos(): List<VideoInfoBean>
+    fun loadAllVideos(): LiveData<List<VideoInfoBean>>
+
+    @Query("select * from VideoInfoBean where id = :id")
+    fun loadIsExist(id: String) : VideoInfoBean
 }

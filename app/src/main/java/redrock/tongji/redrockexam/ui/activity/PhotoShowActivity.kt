@@ -41,7 +41,9 @@ class PhotoShowActivity : AppCompatActivity() {
                     finish()
                 }
 
-                override fun onItemLongClick(view: View, position: Int) {}
+                override fun onItemLongClick(view: View, position: Int) {
+
+                }
             })
             mAllPhotos.text = urlList.size.toString()
         } else {

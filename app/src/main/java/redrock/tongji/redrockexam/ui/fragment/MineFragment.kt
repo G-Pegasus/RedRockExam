@@ -1,5 +1,6 @@
 package redrock.tongji.redrockexam.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import redrock.tongji.lib_base.base.BaseBindVMFragment
@@ -10,6 +11,8 @@ import redrock.tongji.redrockexam.bean.UserBean
 import redrock.tongji.redrockexam.databinding.FragmentMineBinding
 import redrock.tongji.redrockexam.ext.setUiTheme
 import redrock.tongji.redrockexam.model.dao.UserDataBase
+import redrock.tongji.redrockexam.ui.activity.LikeActivity
+import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity
 import redrock.tongji.redrockexam.ui.fragment.dialog.AboutAuthor
 import redrock.tongji.redrockexam.ui.fragment.dialog.SetColor
 import redrock.tongji.redrockexam.ui.fragment.dialog.SetUserInfo
@@ -58,9 +61,13 @@ class MineFragment : BaseBindVMFragment<MineViewModel, FragmentMineBinding>() {
             SetUserInfo().show(childFragmentManager, "SetUserInfo")
         }
 
+        mDatabind.rootUserLike.setOnClickListener {
+            startActivity(Intent(App.context, LikeActivity::class.java))
+        }
+
         appViewModel.run {
             appColor.observe(this@MineFragment) {
-                setUiTheme(it, mDatabind.rootMine, )
+                setUiTheme(it, mDatabind.rootMine)
             }
         }
     }

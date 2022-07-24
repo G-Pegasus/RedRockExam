@@ -16,9 +16,12 @@
         android:theme="@style/Theme.RedRockExam"
         tools:targetApi="n">
         <activity
+            android:name=".ui.activity.LikeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.PhotoShowActivity"
             android:exported="false"
-            android:theme="@style/ImageTranslucentTheme"/>
+            android:theme="@style/ImageTranslucentTheme" />
         <activity
             android:name=".ui.activity.SpecialInfoActivity"
             android:exported="false"
