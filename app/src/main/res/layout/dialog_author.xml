@@ -31,7 +31,7 @@
             android:layout_below="@id/tv_1"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
-            android:text="QQ: 1007127653"
+            android:text="QQ: 1007127653 / VX: G_coder"
             android:textColor="@color/black"
             android:textSize="15sp" />
 

@@ -10,7 +10,7 @@ import redrock.tongji.redrockexam.bean.VideoInfoBean
 
 /**
  * @Author Tongji
- * @Description
+ * @Description 收藏视频
  * @Date create in 2022/7/23 20:42
  */
 

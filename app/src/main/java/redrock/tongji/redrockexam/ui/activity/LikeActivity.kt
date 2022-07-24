@@ -2,27 +2,21 @@ package redrock.tongji.redrockexam.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import redrock.tongji.lib_base.base.BaseBindVMActivity
-import redrock.tongji.lib_base.base.BaseBindVMFragment
 import redrock.tongji.redrockexam.App
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.appViewModel
 import redrock.tongji.redrockexam.bean.CommonData
-import redrock.tongji.redrockexam.bean.VideoInfoBean
 import redrock.tongji.redrockexam.databinding.ActivityLikeBinding
 import redrock.tongji.redrockexam.ext.init
 import redrock.tongji.redrockexam.ext.initFloatBtn
 import redrock.tongji.redrockexam.ext.setUiTheme
-import redrock.tongji.redrockexam.model.repository.LikeRepo
-import redrock.tongji.redrockexam.ui.adapter.DailyAdapter
 import redrock.tongji.redrockexam.ui.adapter.LikeAdapter
 import redrock.tongji.redrockexam.ui.viewmodel.LikeViewModel
 

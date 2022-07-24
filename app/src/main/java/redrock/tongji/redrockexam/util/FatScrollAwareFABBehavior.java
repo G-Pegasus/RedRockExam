@@ -29,6 +29,8 @@ public class FatScrollAwareFABBehavior extends FloatingActionButton.Behavior {
                                        @NonNull View directTargetChild,
                                        @NonNull View target,
                                        int nestedScrollAxes) {
+
+        // 判断是否是垂直滚动，是则返回true
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL ||
                 super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
     }
@@ -37,12 +39,14 @@ public class FatScrollAwareFABBehavior extends FloatingActionButton.Behavior {
     @Override
     public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull FloatingActionButton child,
                                @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed,
-                dyUnconsumed);
+
+        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
 
         if (dyConsumed > 0 && child.getVisibility() == View.VISIBLE) {
+            // 如果向上滑动则隐藏
             child.setVisibility(View.INVISIBLE);
         } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
+            // 向下滑动则展示出来
             child.show();
         }
     }
