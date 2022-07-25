@@ -122,7 +122,6 @@ fun BottomNavigationView.init(navigationItemSelectedAction: (Int) -> Unit) : Bot
     return this
 }
 
-
 // 协程 await
 suspend fun <T> Call<T>.await(): T {
     return suspendCoroutine { continuation ->
@@ -131,12 +130,12 @@ suspend fun <T> Call<T>.await(): T {
                 val body = response.body()
                 if (body != null) continuation.resume(body)
                 else continuation.resumeWithException(
-                    RuntimeException("response is null")
+                    RuntimeException("请求为空")
                 )
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
-                Log.e("Internet error:", t.toString())
+                Log.e("网络请求你错误", t.toString())
                 continuation.resumeWithException(t)
             }
         })
