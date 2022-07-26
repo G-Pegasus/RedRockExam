@@ -25,7 +25,8 @@
 
 我的页面也是体现本App一大特色的地方，实现了一键换肤、用户信息修改和收藏功能，前者通过全局的`ViewModel`实现，设置颜色主题后，通知所有界面主要颜色改变。后两个使用`Room`实现本地持久化存储。  
 ![wode](https://github.com/liutongji/RedRockExam/blob/master/gif/wode.gif) 
-![like](https://github.com/liutongji/RedRockExam/blob/master/gif/addlike.gif)
+![like](https://github.com/liutongji/RedRockExam/blob/master/gif/addlike.gif) 
+![like](https://github.com/liutongji/RedRockExam/blob/master/gif/wode2.gif)
 
 ### （5）视频播放界面
 
@@ -246,7 +247,104 @@ public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNul
     }
 }
 ```
+### （6）RV部分
 
+#### 1. DiffUtil差分局部刷新
+
+```kotlin
+class DiffCallBack(private val oldList: MutableList<VideoInfoBean>, private val newList: MutableList<VideoInfoBean>) :
+    DiffUtil.Callback() {
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] === newList[newItemPosition]
+    }
+
+    override fun getOldListSize(): Int {
+        return oldList.size
+    }
+
+    override fun getNewListSize(): Int {
+        return newList.size
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
+    }
+
+}
+
+// 应用，在喜欢界面删除数据
+fun removeData(position: Int) {
+    val oldList = mList
+    mList?.removeAt(position)
+    val diffCallBack = DiffUtil.calculateDiff(DiffCallBack(oldList, mList))
+    diffCallBack.dispatchUpdatesTo(this)
+}
+```
+
+#### 2. 自定义ItemTouchHelperCallBack实现侧换删除和长按拖拽
+
+这部分在我的课件里有所讲述，这里就不多交代了。通过实现这四个接口来实现功能。
+
+```kotlin
+interface OnHelperCallBack {
+    fun onMove(fromPosition: Int, targetPosition: Int)
+
+    fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder, actionState: Int)
+
+    fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder)
+
+    fun remove(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int)
+}
+
+// 应用，在LikeActivity中
+```
+
+```kotlin
+callBack = RecyclerTouchHelpCallBack(object : RecyclerTouchHelpCallBack.OnHelperCallBack {
+    override fun onMove(fromPosition: Int, targetPosition: Int) {
+        likeAdapter.mList?.let { it1 ->
+            callBack.itemMove(likeAdapter,
+                it1, fromPosition, targetPosition)
+        }
+    }
+
+    override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder, actionState: Int) {
+	// 选中修改Item样式
+        viewHolder.itemView.alpha = 1f
+        viewHolder.itemView.scaleX = 1.2f
+        viewHolder.itemView.scaleY = 1.2f
+    }
+
+    override fun clearView(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder
+    ) {
+        likeAdapter.mList
+        // 松手修改Item样式
+        viewHolder.itemView.alpha = 1f
+        viewHolder.itemView.scaleX = 1f
+        viewHolder.itemView.scaleY = 1f
+    }
+
+    // 删除数据
+    override fun remove(
+        viewHolder: RecyclerView.ViewHolder,
+        direction: Int,
+        position: Int
+    ) {
+        // 在数据库中删除
+        videoDao.deleteVideo(it[position])
+        likeAdapter.removeData(position)
+    }
+
+})
+
+callBack.edit = true
+ItemTouchHelper(callBack).attachToRecyclerView(rvLike)
+```
+
+## 
 ## 3、心得体会
 
 本次考核我认为与我几个月前的的项目相比提升蛮大的，我也明白了只有在自己一步一步实现的项目中才能提升的更多。在项目中不断测试自己的App，寻找bug，寻找可以提升用户体验的地方。我想这就是我们移动端开发的魅力所在，时刻为用户着想。除此之外，我也体会到很多和同伴一起开发的快乐，开发之余吐吐槽可以缓解很多敲代码的疲劳，也可以见识到许多自己不知道的技术。这可能也是部门的温馨之处吧，之前自己一个人摸索着学习真的挺累也挺难坚持的。很感谢这几个月在网校的时光，不仅提升了不少自己的技术，也收获到了难得的友情，这才是**最珍贵**之处。随着学习的越来越深入，也越发的发现自己的不足，项目中有很多待提升之处，只有通过不断地学习才能敲出更精致优美的代码。最后，感谢网校给予了我一个珍贵难忘充实的暑期。
