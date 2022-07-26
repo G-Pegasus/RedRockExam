@@ -64,10 +64,6 @@ class DailyAdapter(private val context: Context, private val mList: MutableList<
             2 -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_video, parent, false)
-                // RV 优化
-//                FollowViewHolder(view).rootLayout.setOnClickListener {
-//                    onClickListener(FollowViewHolder(view).absoluteAdapterPosition)
-//                }
                 FollowViewHolder(view)
             }
 
@@ -115,11 +111,6 @@ class DailyAdapter(private val context: Context, private val mList: MutableList<
 
     fun addMore(moreList: MutableList<RecData>) {
         mList?.addAll(moreList)
-    }
-
-    // 对 RV 进行优化
-    private fun onClickListener(position: Int): View.OnClickListener = View.OnClickListener {
-        onItemClickListener.onItemClick(it, position)
     }
 
     override fun getItemCount(): Int {

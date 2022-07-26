@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 import redrock.tongji.redrockexam.R
 import redrock.tongji.redrockexam.bean.VideoInfoBean
+import redrock.tongji.redrockexam.util.DiffCallBack
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,7 +22,7 @@ import java.util.*
  * @Description
  * @Date create in 2022/7/24 13:22
  */
-class LikeAdapter(private val context: Context, private val mList: List<VideoInfoBean>?) :
+class LikeAdapter(private val context: Context, val mList: MutableList<VideoInfoBean>?) :
     RecyclerView.Adapter<LikeAdapter.LikeViewHolder>() {
 
     private lateinit var onItemClickListener: OnItemClickListener
@@ -56,6 +58,14 @@ class LikeAdapter(private val context: Context, private val mList: List<VideoInf
                 )
             }
         }
+    }
+
+    fun removeData(position: Int) {
+        val oldList = mList
+        mList?.removeAt(position)
+        val diffCallBack = DiffUtil.calculateDiff(DiffCallBack(oldList, mList))
+        diffCallBack.dispatchUpdatesTo(this)
+        // notifyItemRemoved(position)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {

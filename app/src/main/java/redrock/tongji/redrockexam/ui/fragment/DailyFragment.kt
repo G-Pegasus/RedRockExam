@@ -9,6 +9,7 @@ import android.view.animation.LayoutAnimationController
 import androidx.core.view.ViewCompat
 import androidx.core.view.ViewCompat.canScrollVertically
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import redrock.tongji.lib_base.base.BaseBindVMFragment
@@ -24,6 +25,7 @@ import redrock.tongji.redrockexam.ext.showToast
 import redrock.tongji.redrockexam.ui.activity.PlayVideoActivity
 import redrock.tongji.redrockexam.ui.adapter.DailyAdapter
 import redrock.tongji.redrockexam.ui.viewmodel.DailyViewModel
+import redrock.tongji.redrockexam.util.DiffCallBack
 
 /**
  * @Author Tongji

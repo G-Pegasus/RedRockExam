@@ -122,7 +122,7 @@ fun BottomNavigationView.init(navigationItemSelectedAction: (Int) -> Unit) : Bot
     return this
 }
 
-// 协程 await
+// 协程 await，挂起当前的协程
 suspend fun <T> Call<T>.await(): T {
     return suspendCoroutine { continuation ->
         enqueue(object : Callback<T> {
